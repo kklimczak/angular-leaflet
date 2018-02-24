@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {LibModule} from './lib/lib.module';
+import {MatButtonModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -12,7 +14,11 @@ import {LibModule} from './lib/lib.module';
   ],
   imports: [
     BrowserModule,
-    LibModule
+    LibModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
