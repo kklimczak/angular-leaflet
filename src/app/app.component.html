@@ -1,7 +1,7 @@
 <mat-sidenav-container class="container">
   <mat-sidenav #sidenav>Test</mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar>
+  <mat-sidenav-content class="content">
+    <mat-toolbar [color]="'primary'">
       <button mat-button (click)="sidenav.toggle()">Test</button>
     </mat-toolbar>
     <app-leaflet></app-leaflet>
