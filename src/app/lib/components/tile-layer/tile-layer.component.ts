@@ -1,4 +1,4 @@
-import {Component, forwardRef, OnDestroy, OnInit} from '@angular/core';
+import {Component, forwardRef, OnDestroy} from '@angular/core';
 import {BaseLayer} from '../base-layer';
 import {Layer, LayerGroup, Map, tileLayer} from 'leaflet';
 
@@ -8,7 +8,7 @@ import {Layer, LayerGroup, Map, tileLayer} from 'leaflet';
   styleUrls: ['./tile-layer.component.scss'],
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => TileLayerComponent)}]
 })
-export class TileLayerComponent implements OnInit, OnDestroy, BaseLayer {
+export class TileLayerComponent implements OnDestroy, BaseLayer {
 
   map: Map | LayerGroup;
   layer: Layer;
@@ -26,9 +26,6 @@ export class TileLayerComponent implements OnInit, OnDestroy, BaseLayer {
 
   removeFrom() {
     (this.map as any).removeLayer(this.layer);
-  }
-
-  ngOnInit() {
   }
 
   ngOnDestroy() {

@@ -6,7 +6,8 @@
       <button mat-button (click)="visible = !visible">Toggle map</button>
     </mat-toolbar>
     <app-leaflet [options]="options">
-      <app-tile-layer *ngIf="visible"></app-tile-layer>
+      <app-image-overlay [url]="'https://simplemaps.com/static/svg/pl/pl.svg'"></app-image-overlay>
+      <!--<app-tile-layer *ngIf="visible"></app-tile-layer>-->
     </app-leaflet>
   </mat-sidenav-content>
 </mat-sidenav-container>

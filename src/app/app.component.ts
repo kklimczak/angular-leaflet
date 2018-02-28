@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {MapOptions} from 'leaflet';
+import {CRS, MapOptions} from 'leaflet';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,8 @@ export class AppComponent {
   title = 'app';
   options: MapOptions = {
     center: [51.759445, 19.457216],
-    zoom: 13
+    zoom: 13,
+    crs: CRS.Simple
   };
 
   visible = true;
