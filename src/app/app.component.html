@@ -2,8 +2,11 @@
   <mat-sidenav #sidenav>Test</mat-sidenav>
   <mat-sidenav-content class="content">
     <mat-toolbar [color]="'primary'">
-      <button mat-button (click)="sidenav.toggle()">Test</button>
+      <button mat-button (click)="sidenav.toggle()">Open menu</button>
+      <button mat-button (click)="visible = !visible">Toggle map</button>
     </mat-toolbar>
-    <app-leaflet></app-leaflet>
+    <app-leaflet [options]="options">
+      <app-tile-layer *ngIf="visible"></app-tile-layer>
+    </app-leaflet>
   </mat-sidenav-content>
 </mat-sidenav-container>
