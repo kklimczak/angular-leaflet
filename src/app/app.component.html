@@ -7,6 +7,9 @@
     </mat-toolbar>
     <app-leaflet [options]="options">
       <app-tile-layer *ngIf="visible"></app-tile-layer>
+      <app-feature-group>
+        <app-marker></app-marker>
+      </app-feature-group>
     </app-leaflet>
   </mat-sidenav-content>
 </mat-sidenav-container>
