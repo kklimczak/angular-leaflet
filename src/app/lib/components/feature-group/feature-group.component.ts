@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, ContentChildren, forwardRef, OnDestroy, QueryList} from '@angular/core';
+import {Component, ContentChildren, OnDestroy, QueryList} from '@angular/core';
 import {BaseLayer} from '../base-layer';
 import {FeatureGroup, LayerGroup, Map} from 'leaflet';
 
@@ -20,7 +20,7 @@ export class FeatureGroupComponent implements BaseLayer, OnDestroy {
     this.map = map;
     this.layer = new FeatureGroup();
     this.map.addLayer(this.layer);
-    
+
     this.layers.forEach(layer => layer.addTo(this.layer));
 
     this.layers.changes
