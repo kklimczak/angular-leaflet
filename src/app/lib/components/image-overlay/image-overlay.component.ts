@@ -1,6 +1,6 @@
 import {Component, forwardRef, Input, OnDestroy} from '@angular/core';
 import {BaseLayer} from '../base-layer';
-import {imageOverlay, ImageOverlay, latLngBounds, LayerGroup, Map} from 'leaflet';
+import {imageOverlay, ImageOverlay, LatLngBounds, latLngBounds, LayerGroup, Map} from 'leaflet';
 
 @Component({
   selector: 'app-image-overlay',
@@ -10,23 +10,55 @@ import {imageOverlay, ImageOverlay, latLngBounds, LayerGroup, Map} from 'leaflet
 })
 export class ImageOverlayComponent implements  OnDestroy, BaseLayer {
 
-  @Input() url: string;
+  @Input() set src(value: string) {
+    this._url = value;
+    this.prepareLayer();
+  }
+
+  @Input() set width(value: string) {
+    this._width = value;
+    this.prepareLayer();
+  }
+
+  @Input() set height(value: string) {
+    this._height = value;
+    this.prepareLayer();
+  }
 
   map: Map | LayerGroup;
-
   layer: ImageOverlay;
+
+  private _url: string;
+  private _width: string;
+  private _height: string;
 
   constructor() { }
 
   addTo(map: Map | LayerGroup): void {
     this.map = map;
-    this.layer = imageOverlay(this.url, latLngBounds([[100, 100], [200, 200]]));
-    this.map.addLayer(this.layer);
-    console.log('test');
-    console.log(this.layer);
+    this.prepareLayer();
+  }
+
+  prepareLayer() {
+    if (this._url && this._height && this._width) {
+      this.layer = imageOverlay(this._url, this.prepareBounds(500, 474));
+      this.map.addLayer(this.layer);
+    }
+  }
+
+  private prepareBounds(width: number, height: number): LatLngBounds {
+    const southWest = (this.map as Map).unproject([0, height * 2], 1),
+      northEast = (this.map as Map).unproject([width * 2, 0], 1),
+      bounds = latLngBounds(southWest, northEast);
+
+    (this.map as Map).fitBounds(bounds);
+    (this.map as Map).setMaxBounds(bounds);
+
+    return bounds;
   }
 
   removeFrom(): void {
+    (this.map as any).removeLayer(this.layer);
   }
 
   ngOnDestroy(): void {

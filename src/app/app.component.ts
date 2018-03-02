@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {CRS, MapOptions} from 'leaflet';
+import {of} from 'rxjs/observable/of';
+import {delay} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -15,4 +17,12 @@ export class AppComponent {
   };
 
   visible = true;
+
+  width = of(1000).pipe(
+    delay(1000)
+  );
+
+  height = of(1000).pipe(
+    delay(2000)
+  );
 }
