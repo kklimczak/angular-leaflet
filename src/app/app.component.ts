@@ -16,6 +16,13 @@ export class AppComponent {
 
   visible = true;
 
+  width = of(1000).pipe(
+    delay(1000)
+  );
+
+  height = of(1000).pipe(
+    delay(2000)
+  );
   latLng = of([51.759445, 19.457216])
     .pipe(
       delay(2000)
