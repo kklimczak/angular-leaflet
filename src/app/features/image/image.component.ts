@@ -17,8 +17,6 @@ export class ImageComponent implements OnInit {
     crs: CRS.Simple
   };
 
-  visible = true;
-
   width = of(1000).pipe(
     delay(1000)
   );
