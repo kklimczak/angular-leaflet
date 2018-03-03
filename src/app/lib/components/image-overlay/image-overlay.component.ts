@@ -15,12 +15,12 @@ export class ImageOverlayComponent implements  OnDestroy, BaseLayer {
     this.prepareLayer();
   }
 
-  @Input() set width(value: string) {
+  @Input() set width(value: number) {
     this._width = value;
     this.prepareLayer();
   }
 
-  @Input() set height(value: string) {
+  @Input() set height(value: number) {
     this._height = value;
     this.prepareLayer();
   }
@@ -29,8 +29,8 @@ export class ImageOverlayComponent implements  OnDestroy, BaseLayer {
   layer: ImageOverlay;
 
   private _url: string;
-  private _width: string;
-  private _height: string;
+  private _width: number;
+  private _height: number;
 
   constructor() { }
 
@@ -41,7 +41,7 @@ export class ImageOverlayComponent implements  OnDestroy, BaseLayer {
 
   prepareLayer() {
     if (this._url && this._height && this._width) {
-      this.layer = imageOverlay(this._url, this.prepareBounds(500, 474));
+      this.layer = imageOverlay(this._url, this.prepareBounds(this._width, this._height));
       this.map.addLayer(this.layer);
     }
   }
