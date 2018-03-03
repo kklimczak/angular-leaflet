@@ -1,18 +1,19 @@
 <mat-toolbar [color]="'primary'">
-  <button mat-button>Open menu</button>
+  <span>Angular-Leaflet - v. 0.1.0</span>
+  <span class="fill-remaining-space"></span>
   <button mat-button (click)="visible = !visible">Toggle map</button>
 </mat-toolbar>
 <div class="content">
   <div class="left">
     <mat-nav-list>
-      <a mat-list-item>Test</a>
+      <a mat-list-item>First example</a>
     </mat-nav-list>
   </div>
   <div class="right">
     <app-leaflet [options]="options">
       <app-tile-layer *ngIf="visible"></app-tile-layer>
       <app-feature-group>
-        <app-marker></app-marker>
+        <app-marker [latLng]="latLng | async"></app-marker>
       </app-feature-group>
     </app-leaflet>
   </div>

@@ -4,7 +4,10 @@
   height: 100%;
   flex-flow: column;
   mat-toolbar {
-    flex-grow: 0;
+    .fill-remaining-space {
+      flex: 1 1 auto;
+    }
+
   }
   .content {
     display: flex;
