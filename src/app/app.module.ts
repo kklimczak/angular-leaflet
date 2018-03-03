@@ -15,10 +15,10 @@ const routes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'tile-layer'
+    redirectTo: 'tiles'
   },
   {
-    path: 'tile-layer',
+    path: 'tiles',
     component: TilesComponent
   },
   {
