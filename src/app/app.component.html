@@ -1,7 +1,7 @@
 <mat-toolbar [color]="'primary'">
   <span>Angular-Leaflet - v. 0.1.0</span>
   <span class="fill-remaining-space"></span>
-  <button mat-button (click)="visible = !visible">Toggle map</button>
+  <button mat-button>Toggle map</button>
 </mat-toolbar>
 <div class="content">
   <div class="left">
@@ -10,14 +10,6 @@
     </mat-nav-list>
   </div>
   <div class="right">
-    <app-leaflet [options]="options">
-      <!--<app-image-overlay *ngIf="visible" [width]="width | async" [height]="height | async"-->
-                         <!--[src]="'https://simplemaps.com/static/svg/pl/pl.svg'"></app-image-overlay>-->
-
-      <app-tile-layer *ngIf="visible"></app-tile-layer>
-      <app-feature-group>
-        <app-marker [latLng]="latLng | async"></app-marker>
-      </app-feature-group>
-    </app-leaflet>
+    <router-outlet></router-outlet>
   </div>
 </div>
