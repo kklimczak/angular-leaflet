@@ -1,14 +1,23 @@
-<mat-sidenav-container class="container">
-  <mat-sidenav #sidenav>Test</mat-sidenav>
-  <mat-sidenav-content class="content">
-    <mat-toolbar [color]="'primary'">
-      <button mat-button (click)="sidenav.toggle()">Open menu</button>
-      <button mat-button (click)="visible = !visible">Toggle map</button>
-    </mat-toolbar>
+<mat-toolbar [color]="'primary'">
+  <span>Angular-Leaflet - v. 0.1.0</span>
+  <span class="fill-remaining-space"></span>
+  <button mat-button (click)="visible = !visible">Toggle map</button>
+</mat-toolbar>
+<div class="content">
+  <div class="left">
+    <mat-nav-list>
+      <a mat-list-item>First example</a>
+    </mat-nav-list>
+  </div>
+  <div class="right">
     <app-leaflet [options]="options">
-      <app-image-overlay *ngIf="visible" [width]="width | async" [height]="height | async"
-                         [src]="'https://simplemaps.com/static/svg/pl/pl.svg'"></app-image-overlay>
-      <!--<app-tile-layer *ngIf="visible"></app-tile-layer>-->
+      <!--<app-image-overlay *ngIf="visible" [width]="width | async" [height]="height | async"-->
+                         <!--[src]="'https://simplemaps.com/static/svg/pl/pl.svg'"></app-image-overlay>-->
+
+      <app-tile-layer *ngIf="visible"></app-tile-layer>
+      <app-feature-group>
+        <app-marker [latLng]="latLng | async"></app-marker>
+      </app-feature-group>
     </app-leaflet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </div>
+</div>

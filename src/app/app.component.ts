@@ -1,5 +1,5 @@
-import {Component, ViewChild} from '@angular/core';
-import {CRS, MapOptions} from 'leaflet';
+import {Component} from '@angular/core';
+import {MapOptions} from 'leaflet';
 import {of} from 'rxjs/observable/of';
 import {delay} from 'rxjs/operators';
 
@@ -9,11 +9,9 @@ import {delay} from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
   options: MapOptions = {
     center: [51.759445, 19.457216],
-    zoom: 13,
-    crs: CRS.Simple
+    zoom: 13
   };
 
   visible = true;
@@ -25,4 +23,8 @@ export class AppComponent {
   height = of(1000).pipe(
     delay(2000)
   );
+  latLng = of([51.759445, 19.457216])
+    .pipe(
+      delay(2000)
+    );
 }
