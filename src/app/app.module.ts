@@ -10,6 +10,8 @@ import {TilesComponent} from './features/tiles/tiles.component';
 import {TilesModule} from './features/tiles/tiles.module';
 import {ImageModule} from './features/image/image.module';
 import {ImageComponent} from './features/image/image.component';
+import {PolygonsModule} from './features/polygons/polygons.module';
+import {PolygonsComponent} from './features/polygons/polygons.component';
 
 const routes: Route[] = [
   {
@@ -24,6 +26,10 @@ const routes: Route[] = [
   {
     path: 'image-overlay',
     component: ImageComponent
+  },
+  {
+    path: 'polygons',
+    component: PolygonsComponent
   }
 ];
 
@@ -42,6 +48,7 @@ const routes: Route[] = [
     MatGridListModule,
     TilesModule,
     ImageModule,
+    PolygonsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
