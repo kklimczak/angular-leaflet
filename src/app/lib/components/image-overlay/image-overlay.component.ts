@@ -52,7 +52,9 @@ export class ImageOverlayComponent implements  OnDestroy, BaseLayer {
       bounds = latLngBounds(southWest, northEast);
 
     (this.map as Map).fitBounds(bounds);
-    (this.map as Map).setMaxBounds(bounds);
+
+    // TODO kklimczak: change to optional
+    // (this.map as Map).setMaxBounds(bounds);
 
     return bounds;
   }
