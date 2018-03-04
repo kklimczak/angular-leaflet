@@ -5,12 +5,13 @@ import { TileLayerComponent } from './components/tile-layer/tile-layer.component
 import { ImageOverlayComponent } from './components/image-overlay/image-overlay.component';
 import {FeatureGroupComponent} from './components/feature-group/feature-group.component';
 import {MarkerComponent} from './components/marker/marker.component';
+import { PolylineComponent } from './components/polyline/polyline.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [LeafletComponent, TileLayerComponent, FeatureGroupComponent, MarkerComponent, ImageOverlayComponent],
-  exports: [LeafletComponent, TileLayerComponent, FeatureGroupComponent, MarkerComponent, ImageOverlayComponent]
+  declarations: [LeafletComponent, TileLayerComponent, FeatureGroupComponent, MarkerComponent, ImageOverlayComponent, PolylineComponent],
+  exports: [LeafletComponent, TileLayerComponent, FeatureGroupComponent, MarkerComponent, ImageOverlayComponent, PolylineComponent]
 })
 export class LibModule { }
