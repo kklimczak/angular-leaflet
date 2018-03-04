@@ -24,9 +24,8 @@ export class PolygonsComponent implements OnInit {
   pathOptions: Observable<PathOptions> = of({
     weight: 1,
     color: 'red'
-  })
-    .pipe(
-      delay(1000)
+  }).pipe(
+      delay(4000)
     );
 
   constructor() { }
