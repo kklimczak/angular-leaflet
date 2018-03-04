@@ -44,7 +44,7 @@ export class PolylineComponent implements BaseLayer, OnDestroy {
   }
 
   private createLayer() {
-    if (this._coordinates) {
+    if (this.map && this._coordinates) {
       this.layer = polyline(this._coordinates, {
         ...this._options
       });

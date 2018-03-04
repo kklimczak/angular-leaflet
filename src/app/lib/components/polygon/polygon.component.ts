@@ -12,9 +12,20 @@ export class PolygonComponent implements BaseLayer, OnDestroy {
 
   @Input() set coordinates(value: LatLngExpression[]) {
     this._coordinates = value;
+    if (this.layer) {
+      this.layer.setLatLngs(value);
+    } else {
+      this.createLayer();
+    }
   }
+
   @Input() set options(value: PathOptions) {
     this._options = value;
+    if (this.layer) {
+      this.layer.setStyle(value);
+    } else {
+      this.createLayer();
+    }
   }
 
   map: Map | LayerGroup;
@@ -25,12 +36,20 @@ export class PolygonComponent implements BaseLayer, OnDestroy {
 
   constructor() { }
 
+  createLayer() {
+    if (this.map && this._coordinates) {
+      this.layer = polygon(this._coordinates, {
+        ...this._options
+      });
+      this.map.addLayer(this.layer);
+    }
+  }
+
   addTo(map: Map | LayerGroup): void {
     this.map = map;
-    this.layer = polygon(this._coordinates, {
-      ...this._options
-    });
-    this.map.addLayer(this.layer);
+    if (!this.layer) {
+      this.createLayer();
+    }
   }
 
   removeFrom() {
