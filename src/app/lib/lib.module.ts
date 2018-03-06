@@ -7,14 +7,15 @@ import {FeatureGroupComponent} from './components/feature-group/feature-group.co
 import {MarkerComponent} from './components/marker/marker.component';
 import { PolylineComponent } from './components/polyline/polyline.component';
 import { PolygonComponent } from './components/polygon/polygon.component';
+import { RectangleComponent } from './components/rectangle/rectangle.component';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [LeafletComponent, TileLayerComponent, FeatureGroupComponent,
-    MarkerComponent, ImageOverlayComponent, PolylineComponent, PolygonComponent],
+    MarkerComponent, ImageOverlayComponent, PolylineComponent, PolygonComponent, RectangleComponent],
   exports: [LeafletComponent, TileLayerComponent, FeatureGroupComponent,
-    MarkerComponent, ImageOverlayComponent, PolylineComponent, PolygonComponent]
+    MarkerComponent, ImageOverlayComponent, PolylineComponent, PolygonComponent, RectangleComponent]
 })
 export class LibModule { }

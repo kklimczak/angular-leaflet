@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MapOptions, PathOptions} from 'leaflet';
+import {latLngBounds, MapOptions, PathOptions} from 'leaflet';
 import {of} from 'rxjs/observable/of';
-import {delay} from 'rxjs/operators';
+import {delay, map} from 'rxjs/operators';
 import {Observable} from 'rxjs/Observable';
 
 @Component({
@@ -21,6 +21,8 @@ export class PolygonsComponent implements OnInit {
       delay(2000)
     );
 
+  latLngBounds;
+
   pathOptions: Observable<PathOptions> = of({
     weight: 1,
     color: 'red'
@@ -31,6 +33,10 @@ export class PolygonsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.latLngBounds = this.coordinates
+      .pipe(
+        map(coordinates => latLngBounds(coordinates as any))
+      );
   }
 
 }
