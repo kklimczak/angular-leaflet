@@ -1,0 +1,19 @@
+<mat-toolbar [color]="'primary'">
+  <span>Angular-Leaflet - v. 0.1.0</span>
+  <span class="fill-remaining-space"></span>
+  <a mat-icon-button href="https://github.com/kklimczak/angular-leaflet" target="_blank">
+    <span class="fa fa-github fa-2x"></span>
+  </a>
+</mat-toolbar>
+<div class="content">
+  <div class="left">
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['tiles']">Tile Layer</a>
+      <a mat-list-item [routerLink]="['image-overlay']">Image Overlay</a>
+      <a mat-list-item [routerLink]="['polygons']">Polygons</a>
+    </mat-nav-list>
+  </div>
+  <div class="right">
+    <router-outlet></router-outlet>
+  </div>
+</div>
