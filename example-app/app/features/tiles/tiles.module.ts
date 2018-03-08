@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TilesComponent } from './tiles.component';
-import {LibModule} from '../../lib/lib.module';
+import {LibModule} from 'angular-leaflet';
 
 @NgModule({
   imports: [
