@@ -18,4 +18,4 @@ import { RectangleComponent } from './components/rectangle/rectangle.component';
   exports: [LeafletComponent, TileLayerComponent, FeatureGroupComponent,
     MarkerComponent, ImageOverlayComponent, PolylineComponent, PolygonComponent, RectangleComponent]
 })
-export class LibModule { }
+export class LeafletModule { }
