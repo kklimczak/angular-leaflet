@@ -1,11 +1,10 @@
 import {Component, forwardRef, OnDestroy} from '@angular/core';
-import {BaseLayer} from '../base-layer';
 import {Layer, LayerGroup, Map, tileLayer} from 'leaflet';
+import {BaseLayer} from 'angular-leaflet';
 
 @Component({
   selector: 'app-tile-layer',
-  templateUrl: './tile-layer.component.html',
-  styleUrls: ['./tile-layer.component.scss'],
+  template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => TileLayerComponent)}]
 })
 export class TileLayerComponent implements OnDestroy, BaseLayer {
