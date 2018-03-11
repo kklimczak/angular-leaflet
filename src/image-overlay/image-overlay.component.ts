@@ -1,11 +1,10 @@
 import {Component, forwardRef, Input, OnDestroy} from '@angular/core';
-import {BaseLayer} from '../base-layer';
 import {imageOverlay, ImageOverlay, LatLngBounds, latLngBounds, LayerGroup, Map} from 'leaflet';
+import {BaseLayer} from 'angular-leaflet';
 
 @Component({
   selector: 'app-image-overlay',
-  templateUrl: './image-overlay.component.html',
-  styleUrls: ['./image-overlay.component.scss'],
+  template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => ImageOverlayComponent)}]
 })
 export class ImageOverlayComponent implements  OnDestroy, BaseLayer {
