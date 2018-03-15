@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PolygonsComponent } from './polygons.component';
-import {CoreModule, LeafletModule, TileLayerModule, VectorsModule} from 'angular-leaflet';
+import {CoreModule, LeafletModule, MarkerModule, TileLayerModule, VectorsModule} from 'angular-leaflet';
 
 @NgModule({
   imports: [
@@ -9,7 +9,8 @@ import {CoreModule, LeafletModule, TileLayerModule, VectorsModule} from 'angular
     LeafletModule,
     CoreModule,
     TileLayerModule,
-    VectorsModule
+    VectorsModule,
+    MarkerModule
   ],
   declarations: [PolygonsComponent]
 })

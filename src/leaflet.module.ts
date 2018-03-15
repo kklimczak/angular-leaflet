@@ -1,15 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {FeatureGroupComponent} from './groups/feature-group/feature-group.component';
-import {MarkerComponent} from './components/marker/marker.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [FeatureGroupComponent,
-    MarkerComponent],
-  exports: [FeatureGroupComponent,
-    MarkerComponent]
+  declarations: [],
+  exports: []
 })
 export class LeafletModule { }
