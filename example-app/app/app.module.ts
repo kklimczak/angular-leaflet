@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {LibModule} from './lib/lib.module';
 import {MatButtonModule, MatGridListModule, MatListModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {Route, RouterModule} from '@angular/router';
@@ -12,6 +11,7 @@ import {ImageModule} from './features/image/image.module';
 import {ImageComponent} from './features/image/image.component';
 import {PolygonsModule} from './features/polygons/polygons.module';
 import {PolygonsComponent} from './features/polygons/polygons.component';
+import {LeafletModule} from 'angular-leaflet';
 
 const routes: Route[] = [
   {
@@ -39,7 +39,7 @@ const routes: Route[] = [
   ],
   imports: [
     BrowserModule,
-    LibModule,
+    LeafletModule,
     MatSidenavModule,
     MatToolbarModule,
     BrowserAnimationsModule,
