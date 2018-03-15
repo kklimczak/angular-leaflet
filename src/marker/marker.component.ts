@@ -1,6 +1,6 @@
 import {Component, forwardRef, Input, OnDestroy} from '@angular/core';
-import {BaseLayer} from '../base-layer';
 import {divIcon, LatLngExpression, LayerGroup, Map, marker, Marker} from 'leaflet';
+import {BaseLayer} from 'angular-leaflet';
 
 @Component({
   selector: 'app-marker',

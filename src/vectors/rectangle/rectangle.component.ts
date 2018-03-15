@@ -1,11 +1,10 @@
 import {Component, forwardRef, Input, OnDestroy} from '@angular/core';
-import {BaseLayer} from '../base-layer';
 import {LatLngBounds, LayerGroup, Map, PathOptions, rectangle, Rectangle} from 'leaflet';
+import {BaseLayer} from 'angular-leaflet';
 
 @Component({
   selector: 'app-rectangle',
-  templateUrl: './rectangle.component.html',
-  styleUrls: ['./rectangle.component.scss'],
+  template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => RectangleComponent)}]
 })
 export class RectangleComponent implements BaseLayer, OnDestroy {

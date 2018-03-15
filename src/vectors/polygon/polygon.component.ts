@@ -1,14 +1,13 @@
 import {Component, forwardRef, Input, OnDestroy} from '@angular/core';
-import {BaseLayer} from '../base-layer';
-import {LatLngExpression, LayerGroup, Map, PathOptions, polyline, Polyline} from 'leaflet';
+import {LatLngExpression, LayerGroup, Map, PathOptions, polygon, Polygon} from 'leaflet';
+import {BaseLayer} from 'angular-leaflet';
 
 @Component({
-  selector: 'app-polyline',
-  templateUrl: './polyline.component.html',
-  styleUrls: ['./polyline.component.scss'],
-  providers: [{provide: BaseLayer, useExisting: forwardRef(() => PolylineComponent)}]
+  selector: 'app-polygon',
+  template: '',
+  providers: [{provide: BaseLayer, useExisting: forwardRef(() => PolygonComponent)}]
 })
-export class PolylineComponent implements BaseLayer, OnDestroy {
+export class PolygonComponent implements BaseLayer, OnDestroy {
 
   @Input() set coordinates(value: LatLngExpression[]) {
     this._coordinates = value;
@@ -29,35 +28,34 @@ export class PolylineComponent implements BaseLayer, OnDestroy {
   }
 
   map: Map | LayerGroup;
-  layer: Polyline;
+  layer: Polygon;
 
   private _coordinates: LatLngExpression[];
   private _options: PathOptions;
 
   constructor() { }
 
-  addTo(map: Map | LayerGroup): void {
-    this.map = map;
-    if (!this.layer && this._coordinates) {
-      this.createLayer();
-    }
-  }
-
-  private createLayer() {
+  createLayer() {
     if (this.map && this._coordinates) {
-      this.layer = polyline(this._coordinates, {
+      this.layer = polygon(this._coordinates, {
         ...this._options
       });
       this.map.addLayer(this.layer);
     }
   }
 
-  removeFrom(): void {
+  addTo(map: Map | LayerGroup): void {
+    this.map = map;
+    if (!this.layer) {
+      this.createLayer();
+    }
+  }
+
+  removeFrom() {
     (this.map as any).removeLayer(this.layer);
   }
 
   ngOnDestroy() {
     this.removeFrom();
   }
-
 }
