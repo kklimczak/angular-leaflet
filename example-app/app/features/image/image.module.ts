@@ -6,7 +6,6 @@ import {CoreModule, ImageOverlayModule, LeafletModule} from 'angular-leaflet';
 @NgModule({
   imports: [
     CommonModule,
-    LeafletModule,
     CoreModule,
     ImageOverlayModule
   ],

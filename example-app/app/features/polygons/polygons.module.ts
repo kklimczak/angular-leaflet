@@ -6,7 +6,6 @@ import {CoreModule, LeafletModule, MarkerModule, TileLayerModule, VectorsModule}
 @NgModule({
   imports: [
     CommonModule,
-    LeafletModule,
     CoreModule,
     TileLayerModule,
     VectorsModule,
