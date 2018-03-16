@@ -1,1 +1,1 @@
-export {ImageOverlayModule} from './image-overlay.module';
+export {NglImageOverlayModule} from './image-overlay.module';

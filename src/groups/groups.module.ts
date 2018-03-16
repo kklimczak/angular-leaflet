@@ -13,4 +13,4 @@ import {FeatureGroupComponent} from './feature-group/feature-group.component';
     FeatureGroupComponent
   ]
 })
-export class GroupsModule { }
+export class NglGroupsModule { }

@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PolygonsComponent } from './polygons.component';
-import {CoreModule, LeafletModule, MarkerModule, TileLayerModule, VectorsModule} from 'angular-leaflet';
+import {NglCoreModule, NglModule, NglMarkerModule, NglTileLayerModule, NglVectorsModule} from 'angular-leaflet';
 
 @NgModule({
   imports: [
     CommonModule,
-    CoreModule,
-    TileLayerModule,
-    VectorsModule,
-    MarkerModule
+    NglCoreModule,
+    NglTileLayerModule,
+    NglVectorsModule,
+    NglMarkerModule
   ],
   declarations: [PolygonsComponent]
 })

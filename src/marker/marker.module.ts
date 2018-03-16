@@ -13,4 +13,4 @@ import {MarkerComponent} from './marker.component';
     MarkerComponent
   ]
 })
-export class MarkerModule { }
+export class NglMarkerModule { }

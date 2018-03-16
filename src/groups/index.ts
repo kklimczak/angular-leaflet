@@ -1,1 +1,1 @@
-export {GroupsModule} from './groups.module';
+export {NglGroupsModule} from './groups.module';
