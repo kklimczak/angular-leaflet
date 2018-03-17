@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TilesComponent } from './tiles.component';
-import {TileLayerModule} from 'angular-leaflet';
-import {CoreModule} from 'angular-leaflet';
+import {NglTileLayerModule} from 'angular-leaflet';
+import {NglCoreModule} from 'angular-leaflet';
 
 @NgModule({
   imports: [
     CommonModule,
-    CoreModule,
-    TileLayerModule
+    NglCoreModule,
+    NglTileLayerModule
   ],
   declarations: [TilesComponent]
 })

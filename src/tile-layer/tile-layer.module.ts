@@ -13,4 +13,4 @@ import {TileLayerComponent} from './tile-layer.component';
     TileLayerComponent
   ]
 })
-export class TileLayerModule { }
+export class NglTileLayerModule { }

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImageComponent } from './image.component';
-import {CoreModule, ImageOverlayModule, LeafletModule} from 'angular-leaflet';
+import {NglCoreModule, NglImageOverlayModule, NglModule} from 'angular-leaflet';
 
 @NgModule({
   imports: [
     CommonModule,
-    CoreModule,
-    ImageOverlayModule
+    NglCoreModule,
+    NglImageOverlayModule
   ],
   declarations: [ImageComponent]
 })

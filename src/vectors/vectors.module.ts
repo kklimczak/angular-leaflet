@@ -19,4 +19,4 @@ import {RectangleComponent} from './rectangle/rectangle.component';
     RectangleComponent
   ]
 })
-export class VectorsModule { }
+export class NglVectorsModule { }

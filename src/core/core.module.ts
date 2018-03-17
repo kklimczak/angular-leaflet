@@ -13,4 +13,4 @@ import {LeafletComponent} from './leaflet.component';
     LeafletComponent
   ]
 })
-export class CoreModule { }
+export class NglCoreModule { }

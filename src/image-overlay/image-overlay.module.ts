@@ -13,4 +13,4 @@ import {ImageOverlayComponent} from './image-overlay.component';
     ImageOverlayComponent
   ]
 })
-export class ImageOverlayModule { }
+export class NglImageOverlayModule { }

@@ -1,27 +1,27 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {CoreModule, ImageOverlayModule, MarkerModule, TileLayerModule, VectorsModule} from 'angular-leaflet';
-import {GroupsModule} from './groups';
+import {NglCoreModule, NglImageOverlayModule, NglMarkerModule, NglTileLayerModule, NglVectorsModule} from 'angular-leaflet';
+import {NglGroupsModule} from './groups';
 
 @NgModule({
   imports: [
     CommonModule,
-    CoreModule,
-    GroupsModule,
-    ImageOverlayModule,
-    MarkerModule,
-    TileLayerModule,
-    VectorsModule
+    NglCoreModule,
+    NglGroupsModule,
+    NglImageOverlayModule,
+    NglMarkerModule,
+    NglTileLayerModule,
+    NglVectorsModule
   ],
   declarations: [],
   exports: [
     CommonModule,
-    CoreModule,
-    GroupsModule,
-    ImageOverlayModule,
-    MarkerModule,
-    TileLayerModule,
-    VectorsModule
+    NglCoreModule,
+    NglGroupsModule,
+    NglImageOverlayModule,
+    NglMarkerModule,
+    NglTileLayerModule,
+    NglVectorsModule
   ]
 })
-export class LeafletModule { }
+export class NglModule { }
