@@ -13,6 +13,7 @@ Import `NglModule` to root or feature module in your angular app.
 export class AppModule { }
 ```
 Recommended way to import library is through submodules listed below.
+
 |Name|Description|Components
 |--|--|--|
 | `NglCoreModule` | Library core module required by other modules. Contains the base component and class `BaseLayer` to create custom layer. | `<app-leaflet>` |
