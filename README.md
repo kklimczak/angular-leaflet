@@ -1,5 +1,10 @@
 # angular-leaflet
-angular-leaflet is a collection of angular components to build map views faster and with minimal configuration using the most popular library **LeafletJS**.
+
+[![npm version](https://badge.fury.io/js/angular-leaflet.svg)](https://badge.fury.io/js/angular-leaflet)
+[![Build Status](https://travis-ci.org/kklimczak/angular-leaflet.svg?branch=master)](https://travis-ci.org/kklimczak/angular-leaflet)
+
+
+Collection of angular components to build map views faster and with minimal configuration using the most popular library **LeafletJS**.
 ## Instalation
 ```
 npm install --save angular-leaflet

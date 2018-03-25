@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { PolygonsComponent } from './polygons.component';
-import {NglCoreModule, NglModule, NglMarkerModule, NglTileLayerModule, NglVectorsModule} from 'angular-leaflet';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {PolygonsComponent} from './polygons.component';
+import {NglCoreModule, NglGroupsModule, NglMarkerModule, NglTileLayerModule, NglVectorsModule} from 'angular-leaflet';
 
 @NgModule({
   imports: [
@@ -9,8 +9,10 @@ import {NglCoreModule, NglModule, NglMarkerModule, NglTileLayerModule, NglVector
     NglCoreModule,
     NglTileLayerModule,
     NglVectorsModule,
-    NglMarkerModule
+    NglMarkerModule,
+    NglGroupsModule
   ],
   declarations: [PolygonsComponent]
 })
-export class PolygonsModule { }
+export class PolygonsModule {
+}
