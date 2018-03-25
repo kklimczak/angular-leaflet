@@ -6,10 +6,9 @@
     "ng": "ng",
     "start": "ng serve --aot",
     "build": "ng build --prod",
-    "test": "ng test",
+    "test": "jest --runInBand",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "test-lib": "jest",
     "build-lib": "ng-packagr -p package.json"
   },
   "ngPackage": {
