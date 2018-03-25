@@ -30,8 +30,6 @@ export class LeafletComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    this.layers
-      .forEach(layer => console.log(layer));
     this.layers.forEach(layer => layer.addTo(this.map));
     this.layers.changes
       .subscribe(() => this.layers.forEach(layer => layer.addTo(this.map)));
