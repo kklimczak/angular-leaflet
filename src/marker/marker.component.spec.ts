@@ -22,4 +22,6 @@ describe('MarkerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  test
 });

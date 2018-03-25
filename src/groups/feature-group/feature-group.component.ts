@@ -1,5 +1,5 @@
 import {Component, ContentChildren, forwardRef, OnDestroy, QueryList} from '@angular/core';
-import {BaseLayer} from 'angular-leaflet';
+import {BaseLayer} from '../../core/base-layer';
 import {FeatureGroup, LayerGroup, Map} from 'leaflet';
 
 @Component({

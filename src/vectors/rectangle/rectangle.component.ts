@@ -1,6 +1,6 @@
 import {Component, forwardRef, Input, OnDestroy} from '@angular/core';
 import {LatLngBounds, LayerGroup, Map, PathOptions, rectangle, Rectangle} from 'leaflet';
-import {BaseLayer} from 'angular-leaflet';
+import {BaseLayer} from '../../core/base-layer';
 
 @Component({
   selector: 'app-rectangle',

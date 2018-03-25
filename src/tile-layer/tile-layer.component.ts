@@ -1,6 +1,6 @@
 import {Component, forwardRef, OnDestroy} from '@angular/core';
 import {Layer, LayerGroup, Map, tileLayer} from 'leaflet';
-import {BaseLayer} from 'angular-leaflet';
+import {BaseLayer} from '../core/base-layer';
 
 @Component({
   selector: 'app-tile-layer',

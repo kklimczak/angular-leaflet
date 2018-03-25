@@ -6,20 +6,19 @@ describe('ImageOverlayComponent', () => {
   let component: ImageOverlayComponent;
   let fixture: ComponentFixture<ImageOverlayComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ ImageOverlayComponent ]
     })
-    .compileComponents();
-  }));
+      .compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(ImageOverlayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
+    console.log(component);
     expect(component).toBeTruthy();
   });
 });
