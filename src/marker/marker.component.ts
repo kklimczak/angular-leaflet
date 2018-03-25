@@ -1,11 +1,10 @@
 import {Component, forwardRef, Input, OnDestroy} from '@angular/core';
 import {divIcon, LatLngExpression, LayerGroup, Map, marker, Marker} from 'leaflet';
-import {BaseLayer} from 'angular-leaflet';
+import {BaseLayer} from '../core/base-layer';
 
 @Component({
   selector: 'app-marker',
-  templateUrl: './marker.component.html',
-  styleUrls: ['./marker.component.scss'],
+  template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => MarkerComponent)}]
 })
 export class MarkerComponent implements BaseLayer, OnDestroy {
