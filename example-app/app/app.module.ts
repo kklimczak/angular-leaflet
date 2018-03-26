@@ -11,7 +11,6 @@ import {ImageModule} from './features/image/image.module';
 import {ImageComponent} from './features/image/image.component';
 import {PolygonsModule} from './features/polygons/polygons.module';
 import {PolygonsComponent} from './features/polygons/polygons.component';
-import {NglModule} from 'angular-leaflet';
 
 const routes: Route[] = [
   {
@@ -39,7 +38,6 @@ const routes: Route[] = [
   ],
   imports: [
     BrowserModule,
-    NglModule,
     MatSidenavModule,
     MatToolbarModule,
     BrowserAnimationsModule,

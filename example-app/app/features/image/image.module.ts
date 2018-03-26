@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImageComponent } from './image.component';
-import {NglCoreModule, NglImageOverlayModule, NglModule} from 'angular-leaflet';
+import {NglCoreModule, NglImageOverlayModule} from 'angular-leaflet';
 
 @NgModule({
   imports: [
