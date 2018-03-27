@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HandlersComponent } from './handlers.component';
 import {NglCoreModule, NglTileLayerModule} from 'angular-leaflet';
+import { AddMarkerHandlerComponent } from './add-marker-handler/add-marker-handler.component';
 
 @NgModule({
   imports: [
@@ -9,6 +10,6 @@ import {NglCoreModule, NglTileLayerModule} from 'angular-leaflet';
     NglCoreModule,
     NglTileLayerModule
   ],
-  declarations: [HandlersComponent]
+  declarations: [HandlersComponent, AddMarkerHandlerComponent]
 })
 export class HandlersModule { }
