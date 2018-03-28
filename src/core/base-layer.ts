@@ -1,7 +1,16 @@
-import {LayerGroup, Map} from 'leaflet';
+import {Layer, LayerGroup, Map} from 'leaflet';
+import {ContentChildren, QueryList} from '@angular/core';
+import {LayerHandler} from './layer-handler';
 
-export abstract class BaseLayer {
+export class BaseLayer {
   map: Map | LayerGroup;
-  abstract addTo(map: Map | LayerGroup): void;
-  abstract removeFrom(): void;
+  layer: Layer;
+  @ContentChildren(LayerHandler) handlers: QueryList<LayerHandler>;
+
+  addTo(map: Map | LayerGroup): void {}
+  removeFrom(): void {}
+
+  initHandlers() {
+    this.handlers.forEach(handler => handler.initialize(this.layer['_map'], this.layer));
+  }
 }

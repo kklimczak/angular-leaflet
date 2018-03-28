@@ -7,7 +7,7 @@ import {BaseLayer} from '../core/base-layer';
   template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => ImageOverlayComponent)}]
 })
-export class ImageOverlayComponent implements  OnDestroy, BaseLayer {
+export class ImageOverlayComponent extends BaseLayer implements OnDestroy {
 
   @Input() set src(value: string) {
     this._url = value;
@@ -24,14 +24,15 @@ export class ImageOverlayComponent implements  OnDestroy, BaseLayer {
     this.prepareLayer();
   }
 
-  map: Map | LayerGroup;
   layer: ImageOverlay;
 
   private _url: string;
   private _width: number;
   private _height: number;
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   addTo(map: Map | LayerGroup): void {
     this.map = map;
