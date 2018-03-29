@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {latLngBounds, MapOptions, PathOptions} from 'leaflet';
+import {latLngBounds, LatLngExpression, MapOptions, PathOptions} from 'leaflet';
 import {of} from 'rxjs/observable/of';
 import {delay, map} from 'rxjs/operators';
 import {Observable} from 'rxjs/Observable';
@@ -22,6 +22,11 @@ export class PolygonsComponent implements OnInit {
     );
 
   latLngBounds;
+
+  center: Observable<LatLngExpression> = of([51.759445, 19.457216] as LatLngExpression)
+    .pipe(
+      delay(2000)
+    );
 
   pathOptions: Observable<PathOptions> = of({
     weight: 1,
