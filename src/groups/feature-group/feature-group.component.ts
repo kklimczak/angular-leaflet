@@ -8,17 +8,19 @@ import {FeatureGroup, LayerGroup, Map} from 'leaflet';
   styleUrls: ['./feature-group.component.scss'],
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => FeatureGroupComponent)}]
 })
-export class FeatureGroupComponent implements BaseLayer, OnDestroy {
+export class FeatureGroupComponent extends BaseLayer {
 
   map: Map | LayerGroup;
   layer: FeatureGroup;
 
   @ContentChildren(BaseLayer) layers: QueryList<BaseLayer>;
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   addTo(map: Map | LayerGroup): void {
-    this.map = map;
+    super.addTo(map);
     this.layer = new FeatureGroup();
     this.map.addLayer(this.layer);
 
@@ -26,18 +28,11 @@ export class FeatureGroupComponent implements BaseLayer, OnDestroy {
       .filter(layer => layer !== this)
       .forEach(layer => layer.addTo(this.layer));
 
+    this.initHandlers();
+
     this.layers.changes
       .subscribe(() => this.layers
         .filter(layer => layer !== this)
         .forEach(layer => layer.addTo(this.layer)));
   }
-
-  removeFrom() {
-    (this.map as any).removeLayer(this.layer);
-  }
-
-  ngOnDestroy() {
-    this.removeFrom();
-  }
-
 }

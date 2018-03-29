@@ -11,6 +11,8 @@ import {ImageModule} from './features/image/image.module';
 import {ImageComponent} from './features/image/image.component';
 import {PolygonsModule} from './features/polygons/polygons.module';
 import {PolygonsComponent} from './features/polygons/polygons.component';
+import {HandlersComponent} from './features/handlers/handlers.component';
+import {HandlersModule} from './features/handlers/handlers.module';
 
 const routes: Route[] = [
   {
@@ -29,6 +31,10 @@ const routes: Route[] = [
   {
     path: 'polygons',
     component: PolygonsComponent
+  },
+  {
+    path: 'handlers',
+    component: HandlersComponent
   }
 ];
 
@@ -47,6 +53,7 @@ const routes: Route[] = [
     TilesModule,
     ImageModule,
     PolygonsModule,
+    HandlersModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

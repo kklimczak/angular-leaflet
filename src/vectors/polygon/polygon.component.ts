@@ -7,7 +7,7 @@ import {BaseLayer} from '../../core/base-layer';
   template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => PolygonComponent)}]
 })
-export class PolygonComponent implements BaseLayer, OnDestroy {
+export class PolygonComponent extends BaseLayer {
 
   @Input() set coordinates(value: LatLngExpression[]) {
     this._coordinates = value;
@@ -33,7 +33,9 @@ export class PolygonComponent implements BaseLayer, OnDestroy {
   private _coordinates: LatLngExpression[];
   private _options: PathOptions;
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   createLayer() {
     if (this.map && this._coordinates) {
@@ -41,21 +43,14 @@ export class PolygonComponent implements BaseLayer, OnDestroy {
         ...this._options
       });
       this.map.addLayer(this.layer);
+      this.initHandlers();
     }
   }
 
   addTo(map: Map | LayerGroup): void {
-    this.map = map;
+    super.addTo(map);
     if (!this.layer) {
       this.createLayer();
     }
-  }
-
-  removeFrom() {
-    (this.map as any).removeLayer(this.layer);
-  }
-
-  ngOnDestroy() {
-    this.removeFrom();
   }
 }
