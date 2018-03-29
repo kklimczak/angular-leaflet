@@ -1,6 +1,6 @@
 import {Component, forwardRef, Input} from '@angular/core';
 import {BaseLayer} from '../../core/base-layer';
-import {circle, Circle, LatLngExpression, LayerGroup, Map} from 'leaflet';
+import {circle, Circle, LatLngExpression, LayerGroup, Map, PathOptions} from 'leaflet';
 
 @Component({
   selector: 'app-circle',
@@ -28,10 +28,18 @@ export class CircleComponent extends BaseLayer {
     }
   }
 
+  @Input() set options(value: PathOptions) {
+    this._options = value;
+    if (this.layer) {
+      this.layer.setStyle(value);
+    }
+  }
+
   layer: Circle;
 
   private _center: LatLngExpression;
   private _radius: number;
+  private _options: PathOptions;
 
   constructor() {
     super();
@@ -46,7 +54,10 @@ export class CircleComponent extends BaseLayer {
 
   private createLayer() {
     if (this.map && this._center && this._radius) {
-      this.layer = circle(this._center, {radius: this._radius});
+      this.layer = circle(this._center, {
+        ...this._options,
+        radius: this._radius
+      });
       this.map.addLayer(this.layer);
       this.initHandlers();
     }
