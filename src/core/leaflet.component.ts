@@ -1,6 +1,7 @@
 import {AfterContentInit, Component, ContentChildren, ElementRef, Input, OnInit, QueryList} from '@angular/core';
 import {map, Map, MapOptions} from 'leaflet';
 import {BaseLayer} from './base-layer';
+import {MapHandler} from './map-handler';
 
 @Component({
   selector: 'app-leaflet',
@@ -18,6 +19,7 @@ export class LeafletComponent implements OnInit, AfterContentInit {
   @Input() options: MapOptions;
 
   @ContentChildren(BaseLayer) layers: QueryList<BaseLayer>;
+  @ContentChildren(MapHandler) handlers: QueryList<MapHandler>;
 
   map: Map;
 
@@ -33,6 +35,10 @@ export class LeafletComponent implements OnInit, AfterContentInit {
     this.layers.forEach(layer => layer.addTo(this.map));
     this.layers.changes
       .subscribe(() => this.layers.forEach(layer => layer.addTo(this.map)));
+
+    this.handlers.forEach(handler => handler.initialize(this.map));
+    this.handlers.changes
+      .subscribe(() => this.handlers.forEach(handler => handler.initialize(this.map)));
   }
 
 }

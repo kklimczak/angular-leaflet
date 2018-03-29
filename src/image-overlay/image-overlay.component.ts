@@ -7,7 +7,7 @@ import {BaseLayer} from '../core/base-layer';
   template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => ImageOverlayComponent)}]
 })
-export class ImageOverlayComponent implements  OnDestroy, BaseLayer {
+export class ImageOverlayComponent extends BaseLayer {
 
   @Input() set src(value: string) {
     this._url = value;
@@ -24,17 +24,18 @@ export class ImageOverlayComponent implements  OnDestroy, BaseLayer {
     this.prepareLayer();
   }
 
-  map: Map | LayerGroup;
   layer: ImageOverlay;
 
   private _url: string;
   private _width: number;
   private _height: number;
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   addTo(map: Map | LayerGroup): void {
-    this.map = map;
+    super.addTo(map);
     this.prepareLayer();
   }
 
@@ -42,6 +43,7 @@ export class ImageOverlayComponent implements  OnDestroy, BaseLayer {
     if (this._url && this._height && this._width) {
       this.layer = imageOverlay(this._url, this.prepareBounds(this._width, this._height));
       this.map.addLayer(this.layer);
+      this.initHandlers();
     }
   }
 
@@ -57,13 +59,4 @@ export class ImageOverlayComponent implements  OnDestroy, BaseLayer {
 
     return bounds;
   }
-
-  removeFrom(): void {
-    (this.map as any).removeLayer(this.layer);
-  }
-
-  ngOnDestroy(): void {
-    (this.map as any).removeLayer(this.layer);
-  }
-
 }
