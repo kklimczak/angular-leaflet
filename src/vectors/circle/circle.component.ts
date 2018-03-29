@@ -19,9 +19,19 @@ export class CircleComponent extends BaseLayer {
     }
   }
 
+  @Input() set radius(value: number) {
+    this._radius = value;
+    if (this.layer) {
+      this.layer.setRadius(value);
+    } else {
+      this.createLayer();
+    }
+  }
+
   layer: Circle;
 
   private _center: LatLngExpression;
+  private _radius: number;
 
   constructor() {
     super();
@@ -35,8 +45,8 @@ export class CircleComponent extends BaseLayer {
   }
 
   private createLayer() {
-    if (this.map && this._center) {
-      this.layer = circle(this._center, {radius: 1000});
+    if (this.map && this._center && this._radius) {
+      this.layer = circle(this._center, {radius: this._radius});
       this.map.addLayer(this.layer);
       this.initHandlers();
     }
