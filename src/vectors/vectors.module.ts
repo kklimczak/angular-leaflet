@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {PolygonComponent} from './polygon/polygon.component';
 import {PolylineComponent} from './polyline/polyline.component';
 import {RectangleComponent} from './rectangle/rectangle.component';
+import {CircleComponent} from './circle/circle.component';
 
 @NgModule({
   imports: [
@@ -11,12 +12,14 @@ import {RectangleComponent} from './rectangle/rectangle.component';
   declarations: [
     PolygonComponent,
     PolylineComponent,
-    RectangleComponent
+    RectangleComponent,
+    CircleComponent
   ],
   exports: [
     PolygonComponent,
     PolylineComponent,
-    RectangleComponent
+    RectangleComponent,
+    CircleComponent
   ]
 })
 export class NglVectorsModule { }
