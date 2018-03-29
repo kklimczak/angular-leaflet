@@ -7,7 +7,7 @@ import {BaseLayer} from '../core/base-layer';
   template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => MarkerComponent)}]
 })
-export class MarkerComponent implements BaseLayer, OnDestroy {
+export class MarkerComponent extends BaseLayer {
 
   @Input() set latLng(value: LatLngExpression) {
     this._latLng = value;
@@ -19,7 +19,9 @@ export class MarkerComponent implements BaseLayer, OnDestroy {
 
   _latLng: LatLngExpression;
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   private prepareLayer() {
     if (this.map && this._latLng) {
@@ -36,19 +38,11 @@ export class MarkerComponent implements BaseLayer, OnDestroy {
       icon: divIcon()
     });
     this.map.addLayer(this.layer);
+    this.initHandlers();
   }
 
   addTo(map: Map | LayerGroup): void {
-    this.map = map;
+    super.addTo(map);
     this.prepareLayer();
   }
-
-  removeFrom() {
-    (this.map as any).removeLayer(this.layer);
-  }
-
-  ngOnDestroy() {
-    this.removeFrom();
-  }
-
 }

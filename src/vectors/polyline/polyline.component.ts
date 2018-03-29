@@ -7,7 +7,7 @@ import {BaseLayer} from '../../core/base-layer';
   template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => PolylineComponent)}]
 })
-export class PolylineComponent implements BaseLayer, OnDestroy {
+export class PolylineComponent extends BaseLayer {
 
   @Input() set coordinates(value: LatLngExpression[]) {
     this._coordinates = value;
@@ -33,10 +33,12 @@ export class PolylineComponent implements BaseLayer, OnDestroy {
   private _coordinates: LatLngExpression[];
   private _options: PathOptions;
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   addTo(map: Map | LayerGroup): void {
-    this.map = map;
+    super.addTo(map);
     if (!this.layer && this._coordinates) {
       this.createLayer();
     }
@@ -48,15 +50,7 @@ export class PolylineComponent implements BaseLayer, OnDestroy {
         ...this._options
       });
       this.map.addLayer(this.layer);
+      this.initHandlers();
     }
   }
-
-  removeFrom(): void {
-    (this.map as any).removeLayer(this.layer);
-  }
-
-  ngOnDestroy() {
-    this.removeFrom();
-  }
-
 }

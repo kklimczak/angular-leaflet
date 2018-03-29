@@ -7,7 +7,7 @@ import {BaseLayer} from '../../core/base-layer';
   template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => RectangleComponent)}]
 })
-export class RectangleComponent implements BaseLayer, OnDestroy {
+export class RectangleComponent extends BaseLayer {
 
   @Input() set bounds(value: LatLngBounds) {
     this._bounds = value;
@@ -33,7 +33,9 @@ export class RectangleComponent implements BaseLayer, OnDestroy {
   private _bounds: LatLngBounds;
   private _options: PathOptions;
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   createLayer() {
     if (this._bounds) {
@@ -41,21 +43,14 @@ export class RectangleComponent implements BaseLayer, OnDestroy {
         ...this._options
       });
       this.map.addLayer(this.layer);
+      this.initHandlers();
     }
   }
 
   addTo(map: Map | LayerGroup): void {
-    this.map = map;
+    super.addTo(map);
     if (!this.layer) {
       this.createLayer();
     }
-  }
-
-  removeFrom(): void {
-    (this.map as any).removeLayer(this.layer);
-  }
-
-  ngOnDestroy() {
-    this.removeFrom();
   }
 }
