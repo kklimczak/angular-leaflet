@@ -6,6 +6,6 @@
     <app-polygon [coordinates]="[[51.7894, 19.4972], [51.750, 19.435], [51.731, 19.471]]"
                  [options]="pathOptions | async"></app-polygon>
     <app-rectangle [bounds]="latLngBounds | async" [options]="pathOptions | async"></app-rectangle>
-    <app-circle [center]="center | async"></app-circle>
+    <app-circle [center]="center | async" [radius]="1000"></app-circle>
   </app-feature-group>
 </app-leaflet>
