@@ -17,13 +17,21 @@ export class ImageComponent implements OnInit {
     crs: CRS.Simple
   };
 
-  width = of(1000).pipe(
+  width = 1000;
+  height = 948;
+
+  width$ = of(1000).pipe(
     delay(1000)
   );
 
-  height = of(948).pipe(
+  height$ = of(948).pipe(
     delay(2000)
   );
+
+  loaded = of(true)
+    .pipe(
+      delay(3000)
+    );
 
   constructor() { }
 
