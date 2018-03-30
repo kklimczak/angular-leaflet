@@ -40,7 +40,7 @@ export class ImageOverlayComponent extends BaseLayer {
   }
 
   prepareLayer() {
-    if (this._url && this._height && this._width) {
+    if (this.map && this._url && this._height && this._width) {
       this.layer = imageOverlay(this._url, this.prepareBounds(this._width, this._height));
       this.map.addLayer(this.layer);
       this.initHandlers();
