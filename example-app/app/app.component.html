@@ -1,20 +1,55 @@
-<mat-toolbar [color]="'primary'">
-  <span>Angular-Leaflet - v. 0.1.0</span>
-  <span class="fill-remaining-space"></span>
-  <a mat-icon-button href="https://github.com/kklimczak/angular-leaflet" target="_blank">
-    <span class="fa fa-github fa-2x"></span>
-  </a>
-</mat-toolbar>
-<div class="content">
+<header class="container">
   <div class="left">
-    <mat-nav-list>
-      <a mat-list-item [routerLink]="['tiles']">Tile Layer</a>
-      <a mat-list-item [routerLink]="['image-overlay']">Image Overlay</a>
-      <a mat-list-item [routerLink]="['polygons']">Polygons</a>
-      <a mat-list-item [routerLink]="['handlers']">Handlers</a>
-    </mat-nav-list>
+    <img src="./assets/angular-leaflet.png" alt="angular leaflet logo" class="logo">
+    <h1>Angular-Leaflet</h1>
+  </div>
+  <div class="right"></div>
+</header>
+<div class="content container">
+  <div class="left">
+    <ul class="menu">
+      <li class="sub-menu">
+        <a class="label">Getting Started</a>
+        <ul>
+          <li>Installation</li>
+          <li>Advanced</li>
+        </ul>
+      </li>
+      <li class="sub-menu">
+        <a class="label">Layers</a>
+        <ul>
+          <li>Leaflet</li>
+        </ul>
+      </li>
+      <li class="sub-menu">
+        <a class="label">Handlers</a>
+        <ul>
+          <li>Map Handler</li>
+        </ul>
+      </li>
+    </ul>
   </div>
   <div class="right">
     <router-outlet></router-outlet>
   </div>
 </div>
+<!--<mat-toolbar [color]="'primary'">-->
+
+<!--<span class="fill-remaining-space"></span>-->
+<!--<a mat-icon-button href="https://github.com/kklimczak/angular-leaflet" target="_blank">-->
+<!--<span class="fa fa-github fa-2x"></span>-->
+<!--</a>-->
+<!--</mat-toolbar>-->
+<!--<div class="content">-->
+<!--<div class="left">-->
+<!--<mat-nav-list>-->
+<!--<a [routerLink]="['tiles']">Tile Layer</a>-->
+<!--<a [routerLink]="['image-overlay']">Image Overlay</a>-->
+<!--<a [routerLink]="['polygons']">Polygons</a>-->
+<!--<a [routerLink]="['handlers']">Handlers</a>-->
+<!--</mat-nav-list>-->
+<!--</div>-->
+<!--<div class="right">-->
+<!--<router-outlet></router-outlet>-->
+<!--</div>-->
+<!--</div>-->
