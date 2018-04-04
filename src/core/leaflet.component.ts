@@ -8,9 +8,8 @@ import {MapHandler} from './map-handler';
   template: '<ng-content></ng-content>',
   styles: [`
     :host {
-    display: flex;
-    width: 100%;
-    height: 100%;
+      display: flex;
+      flex: 1 1 auto;
     }
   `]
 })
@@ -23,7 +22,8 @@ export class LeafletComponent implements OnInit, AfterContentInit {
 
   map: Map;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef) {
+  }
 
   ngOnInit() {
     this.map = map(this.elementRef.nativeElement, {
