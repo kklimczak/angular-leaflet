@@ -19,7 +19,7 @@ export class LeafletComponent implements OnInit, AfterContentInit {
   @Input() options: MapOptions;
 
   @ContentChildren(BaseLayer) layers: QueryList<BaseLayer>;
-  @ContentChildren(MapHandler) handlers: QueryList<MapHandler>;
+  @ContentChildren(MapHandler, {descendants: true}) handlers: QueryList<MapHandler>;
 
   map: Map;
 
