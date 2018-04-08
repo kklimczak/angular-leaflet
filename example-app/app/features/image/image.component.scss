@@ -8,6 +8,7 @@
     width: 100%;
     flex-direction: column;
     flex: 1 50%;
+    box-sizing: border-box;
   }
   .description {
     overflow-y: auto;

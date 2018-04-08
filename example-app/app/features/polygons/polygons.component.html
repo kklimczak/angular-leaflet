@@ -1,11 +1,26 @@
-<app-leaflet [options]="options">
-  <app-tile-layer></app-tile-layer>
-  <app-feature-group>
-    <app-polyline [coordinates]="coordinates | async" [options]="pathOptions | async"></app-polyline>
-    <app-marker [latLng]="[51.759445, 19.457216]"></app-marker>
-    <app-polygon [coordinates]="[[51.7894, 19.4972], [51.750, 19.435], [51.731, 19.471]]"
-                 [options]="pathOptions | async"></app-polygon>
-    <app-rectangle [bounds]="latLngBounds | async" [options]="pathOptions | async"></app-rectangle>
-    <app-circle [center]="center | async" [radius]="1000" [options]="pathOptions | async"></app-circle>
-  </app-feature-group>
-</app-leaflet>
+<div class="example">
+  <app-leaflet [options]="options">
+    <app-tile-layer></app-tile-layer>
+    <app-feature-group>
+      <app-polyline [coordinates]="coordinates | async" [options]="pathOptions | async"></app-polyline>
+      <app-marker [latLng]="[51.759445, 19.457216]"></app-marker>
+      <app-polygon [coordinates]="[[51.7894, 19.4972], [51.750, 19.435], [51.731, 19.471]]"
+                   [options]="pathOptions | async"></app-polygon>
+      <app-rectangle [bounds]="latLngBounds | async" [options]="pathOptions | async"></app-rectangle>
+      <app-circle [center]="center | async" [radius]="1000" [options]="pathOptions | async"></app-circle>
+    </app-feature-group>
+  </app-leaflet>
+</div>
+<div class="description">
+  <h2>Example title</h2>
+  <h3>Example longer subtitle</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda beatae dolor dolorum ea eaque
+    eos est explicabo facere, fugiat in, laboriosam maxime necessitatibus, officia placeat possimus repellat ullam
+    voluptatum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda beatae dolor dolorum ea eaque
+    eos est explicabo facere, fugiat in, laboriosam maxime necessitatibus, officia placeat possimus repellat ullam
+    voluptatum.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium assumenda beatae dolor dolorum ea eaque
+    eos est explicabo facere, fugiat in, laboriosam maxime necessitatibus, officia placeat possimus repellat ullam
+    voluptatum.</p>
+</div>
