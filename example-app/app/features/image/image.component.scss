@@ -2,6 +2,7 @@
   height: 100%;
   display: flex;
   flex-flow: column nowrap;
+  width: 100%;
   .example, .description {
     display: flex;
     width: 100%;
@@ -11,5 +12,7 @@
   .description {
     overflow-y: auto;
     overflow-x: hidden;
+    background: white;
+    padding: 0 15px;
   }
 }

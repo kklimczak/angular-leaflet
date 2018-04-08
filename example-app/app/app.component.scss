@@ -41,23 +41,39 @@
   }
   .menu {
     list-style: none;
-    margin-top: 5px;
+    margin-top: 0;
     padding: 0;
+    color: #393939;
     li {
       display: flex;
       width: 100%;
-      padding: 10px;
-      margin-bottom: 5px;
+      padding: 5px 10px 5px 30px;
       flex-direction: column;
+      box-sizing: border-box;
+      transition: 0.3s ease-in-out;
+      background: #eeeeee;
+      font-size: 14px;
+      &:hover {
+        cursor: pointer;
+        background: darken(white, 10%);
+      }
       &.sub-menu {
         background: none;
         padding: 0;
         .label {
           padding: 10px;
-          margin-bottom: 5px;
+          //background: white;
+          font-size: 16px;
+          font-weight: 700;
+          .arrow {
+            margin: 0 5px;
+          }
+          &:hover {
+            background: darken(white, 10%);
+          }
         }
         ul {
-          margin-left: 15px;
+          //margin-left: 15px;
           padding: 0;
         }
       }
