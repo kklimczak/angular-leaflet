@@ -1,4 +1,4 @@
-import {Component, forwardRef, Input, OnDestroy} from '@angular/core';
+import {Component, forwardRef, Input} from '@angular/core';
 import {LatLngBounds, LayerGroup, Map, PathOptions, rectangle, Rectangle} from 'leaflet';
 import {BaseLayer} from '../../core/base-layer';
 
@@ -38,7 +38,7 @@ export class RectangleComponent extends BaseLayer {
   }
 
   createLayer() {
-    if (this._bounds) {
+    if (this.map && this._bounds) {
       this.layer = rectangle(this._bounds, {
         ...this._options
       });
