@@ -1,0 +1,19 @@
+:host {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  .example, .description {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    flex: 1 50%;
+    box-sizing: border-box;
+  }
+  .description {
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: white;
+    padding: 0 15px;
+  }
+}
