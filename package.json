@@ -16,7 +16,10 @@
   "ngPackage": {
     "lib": {
       "entryFile": "src/public_api.ts"
-    }
+    },
+    "whitelistedNonPeerDependencies": [
+      "angular", "core-js", "leaflet", "rxjs", "zone.js"
+    ]
   },
   "dependencies": {
     "@angular/animations": "^6.0.5",
