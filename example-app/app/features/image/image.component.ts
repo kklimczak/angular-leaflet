@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CRS, MapOptions} from 'leaflet';
 import {of} from 'rxjs/observable/of';
 import {delay} from 'rxjs/operators';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-image',
@@ -20,22 +21,23 @@ export class ImageComponent implements OnInit {
   width = 1000;
   height = 948;
 
-  width$ = of(1000).pipe(
-    delay(1000)
-  );
-
-  height$ = of(948).pipe(
-    delay(2000)
-  );
+  url$ = new BehaviorSubject('https://simplemaps.com/static/svg/pl/pl.svg');
 
   loaded = of(true)
     .pipe(
-      delay(3000)
+      delay(3000),
     );
 
   constructor() { }
 
+  getUrl() {
+    return this.url$.asObservable();
+  }
+
   ngOnInit() {
+    setTimeout(() => this.url$
+      .next('https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/' +
+        'POLSKA_mapa_woj_z_powiatami.png/646px-POLSKA_mapa_woj_z_powiatami.png'), 5000);
   }
 
 }

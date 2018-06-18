@@ -1,7 +1,7 @@
 <div class="example">
   <app-leaflet [options]="options">
     <app-image-overlay [width]="width" [height]="height" *ngIf="loaded | async"
-                       [src]="'https://simplemaps.com/static/svg/pl/pl.svg'"></app-image-overlay>
+                       [src]="getUrl() | async"></app-image-overlay>
   </app-leaflet>
 </div>
 <div class="description">
