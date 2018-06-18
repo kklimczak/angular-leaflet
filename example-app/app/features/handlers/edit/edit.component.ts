@@ -10,14 +10,14 @@ import {Layer, LayerGroup, Map, Marker} from 'leaflet';
 })
 export class EditComponent implements LayerHandler, OnInit {
 
-  map: Map;
+  leafletMap: Map;
   layer: Layer;
 
   constructor() { }
 
   initialize(map: Map, layer: Layer) {
     this.layer = layer;
-    this.map = map;
+    this.leafletMap = map;
     if (layer instanceof Marker) {
       (layer as Marker).dragging.enable();
     }

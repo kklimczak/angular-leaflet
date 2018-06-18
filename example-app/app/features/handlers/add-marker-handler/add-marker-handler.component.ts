@@ -10,14 +10,14 @@ import {divIcon, LeafletMouseEvent, Map, marker} from 'leaflet';
 })
 export class AddMarkerHandlerComponent implements MapHandler, OnInit {
 
-  map: Map;
+  leafletMap: Map;
 
   constructor() { }
 
   initialize(map: Map): void {
-    this.map = map;
-    this.map.on('click', (event: LeafletMouseEvent) => {
-      this.map.addLayer(marker(event.latlng, {
+    this.leafletMap = map;
+    this.leafletMap.on('click', (event: LeafletMouseEvent) => {
+      this.leafletMap.addLayer(marker(event.latlng, {
         icon: divIcon()
       }));
     });
