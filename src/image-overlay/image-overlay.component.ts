@@ -11,17 +11,29 @@ export class ImageOverlayComponent extends BaseLayer {
 
   @Input() set src(value: string) {
     this._url = value;
-    this.prepareLayer();
+    if (this.layer) {
+      this.layer.setUrl(value);
+    } else {
+      this.prepareLayer();
+    }
   }
 
   @Input() set width(value: number) {
     this._width = value;
-    this.prepareLayer();
+    if (this.layer) {
+      this.layer.setBounds(this.prepareBounds(this._width, this._height));
+    } else {
+      this.prepareLayer();
+    }
   }
 
   @Input() set height(value: number) {
     this._height = value;
-    this.prepareLayer();
+    if (this.layer) {
+      this.layer.setBounds(this.prepareBounds(this._width, this._height));
+    } else {
+      this.prepareLayer();
+    }
   }
 
   layer: ImageOverlay;
@@ -53,9 +65,6 @@ export class ImageOverlayComponent extends BaseLayer {
       bounds = latLngBounds(southWest, northEast);
 
     (this.map as Map).fitBounds(bounds);
-
-    // TODO kklimczak: change to optional
-    // (this.map as Map).setMaxBounds(bounds);
 
     return bounds;
   }
