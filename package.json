@@ -1,5 +1,5 @@
 {
-  "name": "angular-leaflet",
+  "name": "angular-leaflet-dev",
   "version": "0.0.12",
   "license": "MIT",
   "scripts": {
@@ -10,23 +10,15 @@
     "test:watch": "jest --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-lib": "ng-packagr -p package.json",
+    "build-lib": "ng build --prod lib",
     "commit": "git-cz"
   },
-  "ngPackage": {
-    "lib": {
-      "entryFile": "src/public_api.ts"
-    },
-    "whitelistedNonPeerDependencies": [
-      "angular", "core-js", "leaflet", "rxjs", "zone.js"
-    ]
-  },
   "dependencies": {
+    "@angular/common": "^6.0.5",
+    "@angular/core": "^6.0.5",
+    "@angular/compiler": "^6.0.5",
     "@angular/animations": "^6.0.5",
     "@angular/cdk": "6.0.0",
-    "@angular/common": "^6.0.5",
-    "@angular/compiler": "^6.0.5",
-    "@angular/core": "^6.0.5",
     "@angular/forms": "^6.0.5",
     "@angular/http": "^6.0.5",
     "@angular/material": "6.0.0",
@@ -40,8 +32,14 @@
     "rxjs-compat": "^6.0.0-rc.0"
   },
   "devDependencies": {
-    "@angular/cli": "6.0.8",
     "@angular/compiler-cli": "^6.0.5",
+    "@angular-devkit/build-ng-packagr": "~0.6.8",
+    "@angular-devkit/build-angular": "~0.6.8",
+    "ng-packagr": "3.0.3",
+    "tsickle": ">=0.25.5",
+    "tslib": "^1.7.1",
+    "typescript": "~2.7.2",
+    "@angular/cli": "6.0.8",
     "@angular/language-service": "^6.0.5",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
@@ -60,16 +58,19 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "ng-packagr": "3.0.3",
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
-    "tslint": "~5.9.1",
-    "typescript": "~2.7.2",
-    "@angular-devkit/build-angular": "~0.6.8"
+    "tslint": "~5.9.1"
   },
   "jest": {
     "preset": "jest-preset-angular",
-    "setupTestFrameworkScriptFile": "<rootDir>/src/setupJest.ts"
+    "setupTestFrameworkScriptFile": "<rootDir>/lib/setupJest.ts",
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "lib/tsconfig.spec.json"
+      },
+      "__TRANSFORM_HTML__": true
+    }
   },
   "config": {
     "commitizen": {

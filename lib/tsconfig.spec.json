@@ -2,20 +2,13 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/spec",
-    "baseUrl": "./",
-    "module": "commonjs",
-    "rootDir": "../",
     "types": [
       "jasmine",
-      "node",
-      "jest"
-    ],
-    "paths": {
-      "angular-leaflet": ["../src"]
-    }
+      "node"
+    ]
   },
   "files": [
-    "test.ts"
+    "src/test.ts"
   ],
   "include": [
     "**/*.spec.ts",
