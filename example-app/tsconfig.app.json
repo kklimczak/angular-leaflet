@@ -7,7 +7,7 @@
     "rootDir": "../",
     "types": [],
     "paths": {
-      "angular-leaflet": ["../src"]
+      "angular-leaflet": ["../dist/lib"]
     }
   },
   "exclude": [

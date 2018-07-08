@@ -18,13 +18,7 @@
     "baseUrl": ".",
     "paths": {
       "angular-leaflet": [
-        "./src"
-      ],
-      "lib": [
         "dist/lib"
-      ],
-      "lib/*": [
-        "dist/lib/*"
       ]
     }
   }

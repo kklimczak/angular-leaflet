@@ -10,20 +10,8 @@
     "test:watch": "jest --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-lib": "ng-packagr -p package.json",
+    "build-lib": "ng build --prod lib",
     "commit": "git-cz"
-  },
-  "ngPackage": {
-    "lib": {
-      "entryFile": "src/public_api.ts"
-    },
-    "whitelistedNonPeerDependencies": [
-      "angular",
-      "core-js",
-      "leaflet",
-      "rxjs",
-      "zone.js"
-    ]
   },
   "dependencies": {
     "@angular/common": "^6.0.5",
@@ -76,7 +64,7 @@
   },
   "jest": {
     "preset": "jest-preset-angular",
-    "setupTestFrameworkScriptFile": "<rootDir>/src/setupJest.ts"
+    "setupTestFrameworkScriptFile": "<rootDir>/lib/setupJest.ts"
   },
   "config": {
     "commitizen": {
