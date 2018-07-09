@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TileLayerComponent } from './tile-layer.component';
+import {Map, TileLayer} from 'leaflet';
 
 describe('TileLayerComponent', () => {
   let component: TileLayerComponent;
@@ -19,7 +20,18 @@ describe('TileLayerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  test('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  test('should prepare layer', () => {
+    const map = new Map(document.createElement('div'));
+    map.addLayer = jest.fn();
+    component.initHandlers = jest.fn();
+
+    component.addTo(map);
+
+    expect(map.addLayer).toHaveBeenCalledWith(expect.any(TileLayer));
+    expect(component.initHandlers).toHaveBeenCalled();
+  })
 });
