@@ -1,4 +1,4 @@
-import {Component, forwardRef, Input, OnDestroy} from '@angular/core';
+import {Component, forwardRef, Input} from '@angular/core';
 import {imageOverlay, ImageOverlay, LatLngBounds, latLngBounds, LayerGroup, Map} from 'leaflet';
 import {BaseLayer} from '../core/base-layer';
 
