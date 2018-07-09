@@ -1,6 +1,6 @@
 {
   "name": "angular-leaflet-dev",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -11,6 +11,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build-lib": "ng build --prod lib",
+    "publish-lib": "cd dist/lib && npm publish",
+    "deploy-lib": "npm run build-lib && npm run publish-lib",
     "commit": "git-cz"
   },
   "dependencies": {
