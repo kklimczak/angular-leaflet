@@ -12,6 +12,7 @@ export class FeatureGroupComponent extends BaseLayer {
 
   map: Map | LayerGroup;
   layer: FeatureGroup;
+  layerIds: string[] = [];
 
   @ContentChildren(BaseLayer) layers: QueryList<BaseLayer>;
 
@@ -24,15 +25,23 @@ export class FeatureGroupComponent extends BaseLayer {
     this.layer = new FeatureGroup();
     this.map.addLayer(this.layer);
 
-    this.layers
-      .filter(layer => layer !== this)
-      .forEach(layer => layer.addTo(this.layer));
+    this.addLayers();
 
     this.initHandlers();
 
     this.layers.changes
-      .subscribe(() => this.layers
-        .filter(layer => layer !== this)
-        .forEach(layer => layer.addTo(this.layer)));
+      .subscribe(this.addLayers.bind(this));
+  }
+
+  private addLayers() {
+    this.layers
+      .filter(layer => layer.id !== this.id)
+      .filter(layer => !this.layerIds.includes(layer.id))
+      .forEach(this.addLayer.bind(this));
+  }
+
+  private addLayer(layer: BaseLayer) {
+    layer.addTo(this.layer);
+    this.layerIds = [...this.layerIds, layer.id];
   }
 }

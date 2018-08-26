@@ -21,6 +21,7 @@ export class LeafletComponent implements OnInit, AfterContentInit {
   @ContentChildren(MapHandler, {descendants: true}) handlers: QueryList<MapHandler>;
 
   map: Map;
+  layerIds: string[] = [];
 
   constructor(private elementRef: ElementRef) {
   }
@@ -32,13 +33,23 @@ export class LeafletComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    this.layers.forEach(layer => layer.addTo(this.map));
+    this.addLayers();
     this.layers.changes
-      .subscribe(() => this.layers.forEach(layer => layer.addTo(this.map)));
+      .subscribe(this.addLayers.bind(this));
 
     this.handlers.forEach(handler => handler.initialize(this.map));
     this.handlers.changes
       .subscribe(() => this.handlers.forEach(handler => handler.initialize(this.map)));
   }
 
+  private addLayers() {
+    this.layers
+      .filter(layer => !this.layerIds.includes(layer.id))
+      .forEach(this.addLayer.bind(this));
+  }
+
+  private addLayer(layer: BaseLayer) {
+    layer.addTo(this.map);
+    this.layerIds = [...this.layerIds, layer.id];
+  }
 }
