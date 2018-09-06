@@ -61,11 +61,8 @@ export class ImageOverlayComponent extends BaseLayer {
 
   private prepareBounds(width: number, height: number): LatLngBounds {
     const southWest = (this.map as Map).unproject([0, height * 2], 1),
-      northEast = (this.map as Map).unproject([width * 2, 0], 1),
-      bounds = latLngBounds(southWest, northEast);
+      northEast = (this.map as Map).unproject([width * 2, 0], 1);
 
-    (this.map as Map).fitBounds(bounds);
-
-    return bounds;
+    return latLngBounds(southWest, northEast);
   }
 }
