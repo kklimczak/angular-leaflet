@@ -1,14 +1,13 @@
-import {Component, forwardRef, Input} from '@angular/core';
-import {LatLngBounds, LayerGroup, Map, PathOptions, rectangle, Rectangle} from 'leaflet';
-import {BaseLayer} from '../../core/base-layer';
+import { Component, forwardRef, Input } from '@angular/core';
+import { LatLngBounds, LayerGroup, Map, PathOptions, rectangle, Rectangle } from 'leaflet';
+import { BaseLayer } from '../../core/base-layer';
 
 @Component({
-  selector: 'app-rectangle',
+  selector: 'ngl-rectangle',
   template: '',
-  providers: [{provide: BaseLayer, useExisting: forwardRef(() => RectangleComponent)}]
+  providers: [{ provide: BaseLayer, useExisting: forwardRef(() => RectangleComponent) }]
 })
 export class RectangleComponent extends BaseLayer {
-
   @Input() set bounds(value: LatLngBounds) {
     this._bounds = value;
     if (this.layer) {

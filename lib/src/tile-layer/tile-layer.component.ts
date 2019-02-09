@@ -1,14 +1,13 @@
-import {Component, forwardRef} from '@angular/core';
-import {Layer, LayerGroup, Map, tileLayer} from 'leaflet';
-import {BaseLayer} from '../core/base-layer';
+import { Component, forwardRef } from '@angular/core';
+import { Layer, LayerGroup, Map, tileLayer } from 'leaflet';
+import { BaseLayer } from '../core/base-layer';
 
 @Component({
-  selector: 'app-tile-layer',
+  selector: 'ngl-tile-layer',
   template: '',
-  providers: [{provide: BaseLayer, useExisting: forwardRef(() => TileLayerComponent)}]
+  providers: [{ provide: BaseLayer, useExisting: forwardRef(() => TileLayerComponent) }]
 })
 export class TileLayerComponent extends BaseLayer {
-
   map: Map | LayerGroup;
   layer: Layer;
 

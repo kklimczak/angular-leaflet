@@ -1,15 +1,13 @@
-import {Component, forwardRef, Input} from '@angular/core';
-import {BaseLayer} from '../../core/base-layer';
-import {circle, Circle, LatLngExpression, LayerGroup, Map, PathOptions} from 'leaflet';
+import { Component, forwardRef, Input } from '@angular/core';
+import { BaseLayer } from '../../core/base-layer';
+import { circle, Circle, LatLngExpression, LayerGroup, Map, PathOptions } from 'leaflet';
 
 @Component({
-  selector: 'app-circle',
-  templateUrl: './circle.component.html',
-  styleUrls: ['./circle.component.scss'],
-  providers: [{provide: BaseLayer, useExisting: forwardRef(() => CircleComponent)}]
+  selector: 'ngl-circle',
+  template: '',
+  providers: [{ provide: BaseLayer, useExisting: forwardRef(() => CircleComponent) }]
 })
 export class CircleComponent extends BaseLayer {
-
   @Input() set center(value: LatLngExpression) {
     this._center = value;
     if (this.layer) {

@@ -1,14 +1,13 @@
-import {Component, forwardRef, Input, OnDestroy} from '@angular/core';
-import {LatLngExpression, LayerGroup, Map, PathOptions, polygon, Polygon} from 'leaflet';
-import {BaseLayer} from '../../core/base-layer';
+import { Component, forwardRef, Input, OnDestroy } from '@angular/core';
+import { LatLngExpression, LayerGroup, Map, PathOptions, polygon, Polygon } from 'leaflet';
+import { BaseLayer } from '../../core/base-layer';
 
 @Component({
-  selector: 'app-polygon',
+  selector: 'ngl-polygon',
   template: '',
-  providers: [{provide: BaseLayer, useExisting: forwardRef(() => PolygonComponent)}]
+  providers: [{ provide: BaseLayer, useExisting: forwardRef(() => PolygonComponent) }]
 })
 export class PolygonComponent extends BaseLayer {
-
   @Input() set coordinates(value: LatLngExpression[]) {
     this._coordinates = value;
     if (this.layer) {

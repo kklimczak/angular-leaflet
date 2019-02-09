@@ -1,14 +1,13 @@
-import {Component, forwardRef, Input, OnDestroy} from '@angular/core';
-import {divIcon, LatLngExpression, LayerGroup, Map, marker, Marker} from 'leaflet';
-import {BaseLayer} from '../core/base-layer';
+import { Component, forwardRef, Input, OnDestroy } from '@angular/core';
+import { divIcon, LatLngExpression, LayerGroup, Map, marker, Marker } from 'leaflet';
+import { BaseLayer } from '../core/base-layer';
 
 @Component({
-  selector: 'app-marker',
+  selector: 'ngl-marker',
   template: '',
-  providers: [{provide: BaseLayer, useExisting: forwardRef(() => MarkerComponent)}]
+  providers: [{ provide: BaseLayer, useExisting: forwardRef(() => MarkerComponent) }]
 })
 export class MarkerComponent extends BaseLayer {
-
   @Input() set latLng(value: LatLngExpression) {
     this._latLng = value;
     this.prepareLayer();

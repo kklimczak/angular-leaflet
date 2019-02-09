@@ -1,15 +1,13 @@
-import {Component, ContentChildren, forwardRef, OnDestroy, QueryList} from '@angular/core';
-import {BaseLayer} from '../../core/base-layer';
-import {FeatureGroup, LayerGroup, Map} from 'leaflet';
+import { Component, ContentChildren, forwardRef, OnDestroy, QueryList } from '@angular/core';
+import { BaseLayer } from '../../core/base-layer';
+import { FeatureGroup, LayerGroup, Map } from 'leaflet';
 
 @Component({
-  selector: 'app-feature-group',
-  templateUrl: './feature-group.component.html',
-  styleUrls: ['./feature-group.component.scss'],
-  providers: [{provide: BaseLayer, useExisting: forwardRef(() => FeatureGroupComponent)}]
+  selector: 'ngl-feature-group',
+  template: '',
+  providers: [{ provide: BaseLayer, useExisting: forwardRef(() => FeatureGroupComponent) }]
 })
 export class FeatureGroupComponent extends BaseLayer {
-
   map: Map | LayerGroup;
   layer: FeatureGroup;
   layerIds: string[] = [];
@@ -29,8 +27,7 @@ export class FeatureGroupComponent extends BaseLayer {
 
     this.initHandlers();
 
-    this.layers.changes
-      .subscribe(this.addLayers.bind(this));
+    this.layers.changes.subscribe(this.addLayers.bind(this));
   }
 
   private addLayers() {
