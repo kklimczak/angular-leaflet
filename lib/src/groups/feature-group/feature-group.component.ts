@@ -3,9 +3,8 @@ import {BaseLayer} from '../../core/base-layer';
 import {FeatureGroup, LayerGroup, Map} from 'leaflet';
 
 @Component({
-  selector: 'app-feature-group',
-  templateUrl: './feature-group.component.html',
-  styleUrls: ['./feature-group.component.scss'],
+  selector: 'ngl-feature-group',
+  template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => FeatureGroupComponent)}]
 })
 export class FeatureGroupComponent extends BaseLayer {

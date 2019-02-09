@@ -3,7 +3,7 @@ import {divIcon, LatLngExpression, LayerGroup, Map, marker, Marker} from 'leafle
 import {BaseLayer} from '../core/base-layer';
 
 @Component({
-  selector: 'app-marker',
+  selector: 'ngl-marker',
   template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => MarkerComponent)}]
 })

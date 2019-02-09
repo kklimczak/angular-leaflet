@@ -3,7 +3,7 @@ import {LatLngExpression, LayerGroup, Map, PathOptions, polyline, Polyline} from
 import {BaseLayer} from '../../core/base-layer';
 
 @Component({
-  selector: 'app-polyline',
+  selector: 'ngl-polyline',
   template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => PolylineComponent)}]
 })

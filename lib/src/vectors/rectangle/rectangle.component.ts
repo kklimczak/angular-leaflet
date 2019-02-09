@@ -3,7 +3,7 @@ import {LatLngBounds, LayerGroup, Map, PathOptions, rectangle, Rectangle} from '
 import {BaseLayer} from '../../core/base-layer';
 
 @Component({
-  selector: 'app-rectangle',
+  selector: 'ngl-rectangle',
   template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => RectangleComponent)}]
 })

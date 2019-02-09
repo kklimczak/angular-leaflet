@@ -3,7 +3,7 @@ import {Layer, LayerGroup, Map, tileLayer} from 'leaflet';
 import {BaseLayer} from '../core/base-layer';
 
 @Component({
-  selector: 'app-tile-layer',
+  selector: 'ngl-tile-layer',
   template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => TileLayerComponent)}]
 })

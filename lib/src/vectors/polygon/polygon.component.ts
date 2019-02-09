@@ -3,7 +3,7 @@ import {LatLngExpression, LayerGroup, Map, PathOptions, polygon, Polygon} from '
 import {BaseLayer} from '../../core/base-layer';
 
 @Component({
-  selector: 'app-polygon',
+  selector: 'ngl-polygon',
   template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => PolygonComponent)}]
 })

@@ -3,7 +3,7 @@ import {imageOverlay, ImageOverlay, LatLngBounds, latLngBounds, LayerGroup, Map}
 import {BaseLayer} from '../core/base-layer';
 
 @Component({
-  selector: 'app-image-overlay',
+  selector: 'ngl-image-overlay',
   template: '',
   providers: [{provide: BaseLayer, useExisting: forwardRef(() => ImageOverlayComponent)}]
 })

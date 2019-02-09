@@ -4,7 +4,7 @@ import {BaseLayer} from './base-layer';
 import {MapHandler} from './map-handler';
 
 @Component({
-  selector: 'app-leaflet',
+  selector: 'ngl-leaflet',
   template: '<ng-content></ng-content>',
   styles: [`
     :host {
