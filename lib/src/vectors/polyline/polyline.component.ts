@@ -1,14 +1,13 @@
-import {Component, forwardRef, Input, OnDestroy} from '@angular/core';
-import {LatLngExpression, LayerGroup, Map, PathOptions, polyline, Polyline} from 'leaflet';
-import {BaseLayer} from '../../core/base-layer';
+import { Component, forwardRef, Input, OnDestroy } from '@angular/core';
+import { LatLngExpression, LayerGroup, Map, PathOptions, polyline, Polyline } from 'leaflet';
+import { BaseLayer } from '../../core/base-layer';
 
 @Component({
   selector: 'ngl-polyline',
   template: '',
-  providers: [{provide: BaseLayer, useExisting: forwardRef(() => PolylineComponent)}]
+  providers: [{ provide: BaseLayer, useExisting: forwardRef(() => PolylineComponent) }]
 })
 export class PolylineComponent extends BaseLayer {
-
   @Input() set coordinates(value: LatLngExpression[]) {
     this._coordinates = value;
     if (this.layer) {

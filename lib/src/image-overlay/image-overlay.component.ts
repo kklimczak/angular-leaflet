@@ -1,14 +1,13 @@
-import {Component, forwardRef, Input} from '@angular/core';
-import {imageOverlay, ImageOverlay, LatLngBounds, latLngBounds, LayerGroup, Map} from 'leaflet';
-import {BaseLayer} from '../core/base-layer';
+import { Component, forwardRef, Input } from '@angular/core';
+import { imageOverlay, ImageOverlay, LatLngBounds, latLngBounds, LayerGroup, Map } from 'leaflet';
+import { BaseLayer } from '../core/base-layer';
 
 @Component({
   selector: 'ngl-image-overlay',
   template: '',
-  providers: [{provide: BaseLayer, useExisting: forwardRef(() => ImageOverlayComponent)}]
+  providers: [{ provide: BaseLayer, useExisting: forwardRef(() => ImageOverlayComponent) }]
 })
 export class ImageOverlayComponent extends BaseLayer {
-
   @Input() set src(value: string) {
     this._url = value;
     if (this.layer) {
