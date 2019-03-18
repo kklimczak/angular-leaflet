@@ -1,12 +1,13 @@
-import {Layer, LayerGroup, Map} from 'leaflet';
-import {ContentChildren, OnDestroy, QueryList} from '@angular/core';
-import {LayerHandler} from './layer-handler';
-import {v4 as uuid} from 'uuid';
+import { Layer, LayerGroup, Map } from 'leaflet';
+import { ContentChildren, OnDestroy, QueryList } from '@angular/core';
+import { LayerHandler } from './layer-handler';
+import { v4 as uuid } from 'uuid';
 
 export class BaseLayer implements OnDestroy {
   id: string;
   map: Map | LayerGroup;
   layer: Layer;
+  handlerIds: string[] = [];
   @ContentChildren(LayerHandler) handlers: QueryList<LayerHandler>;
 
   constructor() {
@@ -25,6 +26,11 @@ export class BaseLayer implements OnDestroy {
 
   initHandlers() {
     this.handlers.forEach(handler => handler.initialize(this.layer['_map'], this.layer));
+  }
+
+  initHandler(handler: LayerHandler) {
+    handler.initialize(this.layer['_map'], this.layer);
+    this.handlerIds = [...this.handlerIds, handler.id];
   }
 
   ngOnDestroy() {
