@@ -38,7 +38,7 @@ export class LeafletComponent implements OnInit, AfterContentInit {
     this.layers.changes.subscribe(this.addLayers.bind(this));
 
     this.addHandlers();
-    this.handlers.changes.subscribe(() => this.handlers.forEach(this.addHandlers.bind(this)));
+    this.handlers.changes.subscribe(this.addHandlers.bind(this));
   }
 
   private addLayers() {
