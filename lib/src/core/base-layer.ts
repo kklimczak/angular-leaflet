@@ -2,12 +2,14 @@ import { Layer, LayerGroup, Map } from 'leaflet';
 import { AfterContentInit, ContentChildren, OnDestroy, QueryList } from '@angular/core';
 import { LayerHandler } from './layer-handler';
 import { v4 as uuid } from 'uuid';
+import { Subscription } from 'rxjs';
 
 export class BaseLayer implements OnDestroy, AfterContentInit {
   id: string;
   map: Map | LayerGroup;
   layer: Layer;
   handlerIds: string[] = [];
+  handlerSubscription: Subscription;
   @ContentChildren(LayerHandler) handlers: QueryList<LayerHandler>;
 
   constructor() {
@@ -26,7 +28,7 @@ export class BaseLayer implements OnDestroy, AfterContentInit {
 
   ngAfterContentInit(): void {
     this.initHandlers();
-    this.handlers.changes.subscribe(this.initHandlers.bind(this));
+    this.handlerSubscription = this.handlers.changes.subscribe(this.initHandlers.bind(this));
   }
 
   initHandlers() {
@@ -39,6 +41,7 @@ export class BaseLayer implements OnDestroy, AfterContentInit {
   }
 
   ngOnDestroy() {
+    this.handlerSubscription.unsubscribe();
     this.removeFrom();
   }
 }
