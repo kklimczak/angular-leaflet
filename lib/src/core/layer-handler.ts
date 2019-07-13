@@ -1,7 +1,12 @@
-import {Layer, Map} from 'leaflet';
+import { Layer, Map } from 'leaflet';
+import { v4 as uuid } from 'uuid';
 
-export abstract class LayerHandler {
-  leafletMap: Map;
-  layer: Layer;
-  abstract initialize(map: Map, layer: Layer);
+export class LayerHandler {
+  id: string;
+
+  constructor() {
+    this.id = uuid();
+  }
+
+  initialize(map: Map, layer: Layer) {}
 }

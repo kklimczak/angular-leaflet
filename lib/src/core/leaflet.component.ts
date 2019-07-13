@@ -23,6 +23,7 @@ export class LeafletComponent implements OnInit, AfterContentInit {
 
   map: Map;
   layerIds: string[] = [];
+  handlerIds: string[] = [];
 
   constructor(private elementRef: ElementRef) {}
 
@@ -36,8 +37,8 @@ export class LeafletComponent implements OnInit, AfterContentInit {
     this.addLayers();
     this.layers.changes.subscribe(this.addLayers.bind(this));
 
-    this.handlers.forEach(handler => handler.initialize(this.map));
-    this.handlers.changes.subscribe(() => this.handlers.forEach(handler => handler.initialize(this.map)));
+    this.addHandlers();
+    this.handlers.changes.subscribe(this.addHandlers.bind(this));
   }
 
   private addLayers() {
@@ -47,5 +48,14 @@ export class LeafletComponent implements OnInit, AfterContentInit {
   private addLayer(layer: BaseLayer) {
     layer.addTo(this.map);
     this.layerIds = [...this.layerIds, layer.id];
+  }
+
+  private addHandlers() {
+    this.handlers.filter(handler => !this.handlerIds.includes(handler.id)).forEach(this.addHandler.bind(this));
+  }
+
+  private addHandler(handler: MapHandler) {
+    handler.initialize(this.map);
+    this.handlerIds = [...this.handlerIds, handler.id];
   }
 }
