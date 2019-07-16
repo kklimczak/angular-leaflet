@@ -1,7 +1,8 @@
+import 'jest';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TileLayerComponent } from './tile-layer.component';
-import {Map, TileLayer} from 'leaflet';
+import { Map, TileLayer } from 'leaflet';
 
 describe('TileLayerComponent', () => {
   let component: TileLayerComponent;
@@ -9,9 +10,8 @@ describe('TileLayerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TileLayerComponent ]
-    })
-    .compileComponents();
+      declarations: [TileLayerComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -33,5 +33,5 @@ describe('TileLayerComponent', () => {
 
     expect(map.addLayer).toHaveBeenCalledWith(expect.any(TileLayer));
     expect(component.initHandlers).toHaveBeenCalled();
-  })
+  });
 });
