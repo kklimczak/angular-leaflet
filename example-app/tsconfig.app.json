@@ -10,8 +10,5 @@
       "angular-leaflet": ["../lib/src/public_api"]
     }
   },
-  "exclude": [
-    "test.ts",
-    "**/*.spec.ts"
-  ]
+  "exclude": ["**/*.spec.ts"]
 }

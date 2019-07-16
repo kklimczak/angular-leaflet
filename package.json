@@ -66,9 +66,9 @@
     "setupTestFrameworkScriptFile": "<rootDir>/lib/setupJest.ts",
     "globals": {
       "ts-jest": {
-        "tsConfigFile": "lib/tsconfig.spec.json"
-      },
-      "__TRANSFORM_HTML__": true
+        "tsConfig": "lib/tsconfig.spec.json",
+        "stringifyContentPathRegex": true
+      }
     }
   },
   "husky": {
