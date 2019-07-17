@@ -10,7 +10,7 @@ export class BaseLayer<T extends Layer> implements OnDestroy, AfterContentInit {
   layerRef: T;
   handlerIds: string[] = [];
   handlerSubscription: Subscription;
-  @ContentChildren(LayerHandler) handlers: QueryList<LayerHandler>;
+  @ContentChildren(LayerHandler) handlers: QueryList<LayerHandler<any>>;
 
   constructor() {
     this.id = uuid();
@@ -35,7 +35,7 @@ export class BaseLayer<T extends Layer> implements OnDestroy, AfterContentInit {
     this.handlers.filter(handler => !this.handlerIds.includes(handler.id)).forEach(this.initHandler.bind(this));
   }
 
-  initHandler(handler: LayerHandler) {
+  initHandler(handler: LayerHandler<any>) {
     handler.initialize(this.layerRef['_map'], this.layerRef);
     this.handlerIds = [...this.handlerIds, handler.id];
   }
