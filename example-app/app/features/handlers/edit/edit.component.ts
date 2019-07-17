@@ -9,10 +9,6 @@ import { Layer, Map, Marker } from 'leaflet';
   providers: [{ provide: LayerHandler, useExisting: forwardRef(() => EditComponent) }]
 })
 export class EditComponent extends LayerHandler {
-  constructor() {
-    super();
-  }
-
   initialize(map: Map, layer: Layer) {
     if (layer instanceof Marker) {
       (layer as Marker).dragging.enable();
