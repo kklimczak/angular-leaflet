@@ -1,6 +1,6 @@
 import { Component, forwardRef } from '@angular/core';
 import { LayerHandler } from 'angular-leaflet';
-import { Layer, Map, Marker } from 'leaflet';
+import { Map, Marker } from 'leaflet';
 
 @Component({
   selector: 'app-edit',
@@ -8,10 +8,9 @@ import { Layer, Map, Marker } from 'leaflet';
   styleUrls: ['./edit.component.scss'],
   providers: [{ provide: LayerHandler, useExisting: forwardRef(() => EditComponent) }]
 })
-export class EditComponent extends LayerHandler {
-  initialize(map: Map, layer: Layer) {
-    if (layer instanceof Marker) {
-      (layer as Marker).dragging.enable();
-    }
+export class EditComponent extends LayerHandler<Marker> {
+  initialize(mapRef: Map, layerRef: Marker<any>) {
+    super.initialize(mapRef, layerRef);
+    this.layerRef.dragging.enable();
   }
 }
