@@ -7,11 +7,11 @@ import { BaseLayer } from '../../core/base-layer';
   template: '',
   providers: [{ provide: BaseLayer, useExisting: forwardRef(() => RectangleComponent) }]
 })
-export class RectangleComponent extends BaseLayer {
+export class RectangleComponent extends BaseLayer<Rectangle> {
   @Input() set bounds(value: LatLngBounds) {
     this._bounds = value;
-    if (this.layer) {
-      this.layer.setBounds(value);
+    if (this.layerRef) {
+      this.layerRef.setBounds(value);
     } else {
       this.createLayer();
     }
@@ -19,36 +19,29 @@ export class RectangleComponent extends BaseLayer {
 
   @Input() set options(value: PathOptions) {
     this._options = value;
-    if (this.layer) {
-      this.layer.setStyle(value);
+    if (this.layerRef) {
+      this.layerRef.setStyle(value);
     } else {
       this.createLayer();
     }
   }
 
-  map: Map | LayerGroup;
-  layer: Rectangle;
-
   private _bounds: LatLngBounds;
   private _options: PathOptions;
 
-  constructor() {
-    super();
-  }
-
   createLayer() {
-    if (this.map && this._bounds) {
-      this.layer = rectangle(this._bounds, {
+    if (this.mapRef && this._bounds) {
+      this.layerRef = rectangle(this._bounds, {
         ...this._options
       });
-      this.map.addLayer(this.layer);
+      this.mapRef.addLayer(this.layerRef);
       this.initHandlers();
     }
   }
 
   addTo(map: Map | LayerGroup): void {
     super.addTo(map);
-    if (!this.layer) {
+    if (!this.layerRef) {
       this.createLayer();
     }
   }

@@ -1,5 +1,5 @@
 import { Component, forwardRef } from '@angular/core';
-import { Layer, LayerGroup, Map, tileLayer } from 'leaflet';
+import { LayerGroup, Map, TileLayer, tileLayer } from 'leaflet';
 import { BaseLayer } from '../core/base-layer';
 
 @Component({
@@ -7,19 +7,12 @@ import { BaseLayer } from '../core/base-layer';
   template: '',
   providers: [{ provide: BaseLayer, useExisting: forwardRef(() => TileLayerComponent) }]
 })
-export class TileLayerComponent extends BaseLayer {
-  map: Map | LayerGroup;
-  layer: Layer;
-
-  constructor() {
-    super();
-  }
-
+export class TileLayerComponent extends BaseLayer<TileLayer> {
   addTo(map: Map | LayerGroup) {
     super.addTo(map);
-    if (!this.layer) {
-      this.layer = tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-      this.map.addLayer(this.layer);
+    if (!this.layerRef) {
+      this.layerRef = tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+      this.mapRef.addLayer(this.layerRef);
       this.initHandlers();
     }
   }

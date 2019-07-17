@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MarkerComponent } from './marker.component';
-import {divIcon, Map, marker} from 'leaflet';
+import { divIcon, Map, marker } from 'leaflet';
 
 describe('MarkerComponent', () => {
   let component: MarkerComponent;
@@ -9,9 +9,8 @@ describe('MarkerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MarkerComponent ]
-    })
-    .compileComponents();
+      declarations: [MarkerComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -24,7 +23,7 @@ describe('MarkerComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  test('should create layer', () => {
+  test('should create layerRef', () => {
     const map = new Map(document.createElement('div'));
     map.addLayer = jest.fn();
     component.initHandlers = jest.fn();
@@ -35,9 +34,11 @@ describe('MarkerComponent', () => {
 
     component.addTo(map);
 
-    expect(map.addLayer).toHaveBeenCalledWith(marker([0, 0], {
-      icon: divIcon()
-    }));
+    expect(map.addLayer).toHaveBeenCalledWith(
+      marker([0, 0], {
+        icon: divIcon()
+      })
+    );
     expect(component.initHandlers).toHaveBeenCalled();
   });
 
@@ -48,12 +49,12 @@ describe('MarkerComponent', () => {
 
     component.addTo(map);
 
-    component.layer.setLatLng = jest.fn();
+    component.layerRef.setLatLng = jest.fn();
 
     component.latLng = [20, 20];
 
     fixture.detectChanges();
 
-    expect(component.layer.setLatLng).toHaveBeenCalledWith([20, 20]);
+    expect(component.layerRef.setLatLng).toHaveBeenCalledWith([20, 20]);
   });
 });

@@ -4,25 +4,25 @@ import { LayerHandler } from './layer-handler';
 import { v4 as uuid } from 'uuid';
 import { Subscription } from 'rxjs';
 
-export class BaseLayer implements OnDestroy, AfterContentInit {
+export class BaseLayer<T extends Layer> implements OnDestroy, AfterContentInit {
   id: string;
-  map: Map | LayerGroup;
-  layer: Layer;
+  mapRef: Map | LayerGroup;
+  layerRef: T;
   handlerIds: string[] = [];
   handlerSubscription: Subscription;
-  @ContentChildren(LayerHandler) handlers: QueryList<LayerHandler>;
+  @ContentChildren(LayerHandler) handlers: QueryList<LayerHandler<any>>;
 
   constructor() {
     this.id = uuid();
   }
 
   addTo(map: Map | LayerGroup): void {
-    this.map = map;
+    this.mapRef = map;
   }
 
   removeFrom(): void {
-    if (this.layer) {
-      (this.map as any).removeLayer(this.layer);
+    if (this.layerRef) {
+      (this.mapRef as any).removeLayer(this.layerRef);
     }
   }
 
@@ -35,8 +35,8 @@ export class BaseLayer implements OnDestroy, AfterContentInit {
     this.handlers.filter(handler => !this.handlerIds.includes(handler.id)).forEach(this.initHandler.bind(this));
   }
 
-  initHandler(handler: LayerHandler) {
-    handler.initialize(this.layer['_map'], this.layer);
+  initHandler(handler: LayerHandler<any>) {
+    handler.initialize(this.layerRef['_map'], this.layerRef);
     this.handlerIds = [...this.handlerIds, handler.id];
   }
 

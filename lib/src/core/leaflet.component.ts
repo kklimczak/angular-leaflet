@@ -18,7 +18,7 @@ import { MapHandler } from './map-handler';
 export class LeafletComponent implements OnInit, AfterContentInit {
   @Input() options: MapOptions;
 
-  @ContentChildren(BaseLayer) layers: QueryList<BaseLayer>;
+  @ContentChildren(BaseLayer) layers: QueryList<BaseLayer<any>>;
   @ContentChildren(MapHandler, { descendants: true }) handlers: QueryList<MapHandler>;
 
   map: Map;
@@ -45,7 +45,7 @@ export class LeafletComponent implements OnInit, AfterContentInit {
     this.layers.filter(layer => !this.layerIds.includes(layer.id)).forEach(this.addLayer.bind(this));
   }
 
-  private addLayer(layer: BaseLayer) {
+  private addLayer(layer: BaseLayer<any>) {
     layer.addTo(this.map);
     this.layerIds = [...this.layerIds, layer.id];
   }

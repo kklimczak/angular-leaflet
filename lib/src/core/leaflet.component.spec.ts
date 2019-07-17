@@ -8,9 +8,8 @@ describe('LeafletComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LeafletComponent ]
-    })
-    .compileComponents();
+      declarations: [LeafletComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -23,13 +22,17 @@ describe('LeafletComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  test('should create map object with passed options', () => {
+  test('should create mapRef object with passed options', () => {
     component.options = {
       center: [0, 0],
       zoom: 10
     };
     fixture.detectChanges();
-    const {map: {options: {center, zoom}}} = component;
+    const {
+      map: {
+        options: { center, zoom }
+      }
+    } = component;
     expect(component.map).toBeTruthy();
     expect(center).toEqual([0, 0]);
     expect(zoom).toEqual(10);

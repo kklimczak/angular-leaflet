@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnDestroy } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { LatLngExpression, LayerGroup, Map, PathOptions, polyline, Polyline } from 'leaflet';
 import { BaseLayer } from '../../core/base-layer';
 
@@ -7,11 +7,11 @@ import { BaseLayer } from '../../core/base-layer';
   template: '',
   providers: [{ provide: BaseLayer, useExisting: forwardRef(() => PolylineComponent) }]
 })
-export class PolylineComponent extends BaseLayer {
+export class PolylineComponent extends BaseLayer<Polyline> {
   @Input() set coordinates(value: LatLngExpression[]) {
     this._coordinates = value;
-    if (this.layer) {
-      this.layer.setLatLngs(value);
+    if (this.layerRef) {
+      this.layerRef.setLatLngs(value);
     } else {
       this.createLayer();
     }
@@ -19,36 +19,29 @@ export class PolylineComponent extends BaseLayer {
 
   @Input() set options(value: PathOptions) {
     this._options = value;
-    if (this.layer) {
-      this.layer.setStyle(value);
+    if (this.layerRef) {
+      this.layerRef.setStyle(value);
     } else {
       this.createLayer();
     }
   }
 
-  map: Map | LayerGroup;
-  layer: Polyline;
-
   private _coordinates: LatLngExpression[];
   private _options: PathOptions;
 
-  constructor() {
-    super();
-  }
-
   addTo(map: Map | LayerGroup): void {
     super.addTo(map);
-    if (!this.layer && this._coordinates) {
+    if (!this.layerRef && this._coordinates) {
       this.createLayer();
     }
   }
 
   private createLayer() {
-    if (this.map && this._coordinates) {
-      this.layer = polyline(this._coordinates, {
+    if (this.mapRef && this._coordinates) {
+      this.layerRef = polyline(this._coordinates, {
         ...this._options
       });
-      this.map.addLayer(this.layer);
+      this.mapRef.addLayer(this.layerRef);
       this.initHandlers();
     }
   }

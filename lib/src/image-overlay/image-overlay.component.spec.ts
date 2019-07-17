@@ -1,7 +1,7 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {ImageOverlayComponent} from './image-overlay.component';
-import {CRS, latLngBounds, Map} from 'leaflet';
+import { ImageOverlayComponent } from './image-overlay.component';
+import { CRS, latLngBounds, Map } from 'leaflet';
 
 const url = 'http://localhost:4200/test.jpg';
 const width = 200;
@@ -13,9 +13,8 @@ describe('ImageOverlayComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImageOverlayComponent ]
-    })
-      .compileComponents();
+      declarations: [ImageOverlayComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ImageOverlayComponent);
     component = fixture.componentInstance;
@@ -26,55 +25,55 @@ describe('ImageOverlayComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  test('should prepare image layer', () => {
-    component.map = new Map(document.createElement('div'));
-    component.map.addLayer = jest.fn();
+  test('should prepare image layerRef', () => {
+    component.mapRef = new Map(document.createElement('div'));
+    component.mapRef.addLayer = jest.fn();
     component.src = url;
     component.height = height;
     component.width = width;
 
     fixture.detectChanges();
 
-    expect(component.layer).toBeTruthy();
-    expect(component.map.addLayer).toHaveBeenCalled();
-    expect(component.map.addLayer).toHaveBeenCalledWith(component.layer);
+    expect(component.layerRef).toBeTruthy();
+    expect(component.mapRef.addLayer).toHaveBeenCalled();
+    expect(component.mapRef.addLayer).toHaveBeenCalledWith(component.layerRef);
   });
 
-  test('should prevent to prepare layer when map is missing', () => {
+  test('should prevent to prepare layerRef when mapRef is missing', () => {
     component.src = url;
     component.height = height;
     component.width = width;
 
     fixture.detectChanges();
 
-    expect(component.layer).toBeFalsy();
+    expect(component.layerRef).toBeFalsy();
   });
 
   test('should change width when input has been changed', () => {
     setBaseComponentSetup(component);
     fixture.detectChanges();
 
-    component.layer.setBounds = jest.fn();
+    component.layerRef.setBounds = jest.fn();
 
     component.width = 300;
 
     fixture.detectChanges();
 
-    expect(component.layer.setBounds).toHaveBeenCalled();
-    expect(component.layer.setBounds).toHaveBeenCalledWith(latLngBounds([[-0, 300], [-300, 0]]));
+    expect(component.layerRef.setBounds).toHaveBeenCalled();
+    expect(component.layerRef.setBounds).toHaveBeenCalledWith(latLngBounds([[-0, 300], [-300, 0]]));
   });
 
   test('should change height when input has been changed', () => {
     setBaseComponentSetup(component);
     fixture.detectChanges();
 
-    component.layer.setBounds = jest.fn();
+    component.layerRef.setBounds = jest.fn();
 
     component.height = 200;
     fixture.detectChanges();
 
-    expect(component.layer.setBounds).toHaveBeenCalled();
-    expect(component.layer.setBounds).toHaveBeenCalledWith(latLngBounds([[-0, 200], [-200, 0]]));
+    expect(component.layerRef.setBounds).toHaveBeenCalled();
+    expect(component.layerRef.setBounds).toHaveBeenCalledWith(latLngBounds([[-0, 200], [-200, 0]]));
   });
 
   test('should change url when input has been changed', () => {
@@ -83,18 +82,18 @@ describe('ImageOverlayComponent', () => {
     setBaseComponentSetup(component);
     fixture.detectChanges();
 
-    component.layer.setUrl = jest.fn();
+    component.layerRef.setUrl = jest.fn();
     component.src = src;
 
     fixture.detectChanges();
 
-    expect(component.layer.setUrl).toHaveBeenCalled();
-    expect(component.layer.setUrl).toHaveBeenCalledWith(src);
+    expect(component.layerRef.setUrl).toHaveBeenCalled();
+    expect(component.layerRef.setUrl).toHaveBeenCalledWith(src);
   });
 });
 
 function setBaseComponentSetup(component: ImageOverlayComponent) {
-  component.map = new Map(document.createElement('div'), {
+  component.mapRef = new Map(document.createElement('div'), {
     crs: CRS.Simple
   });
   component.src = url;

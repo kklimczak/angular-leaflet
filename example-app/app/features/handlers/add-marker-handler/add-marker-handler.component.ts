@@ -1,4 +1,4 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, OnDestroy } from '@angular/core';
 import { MapHandler } from 'angular-leaflet';
 import { divIcon, LeafletMouseEvent, Map, marker } from 'leaflet';
 
@@ -8,21 +8,21 @@ import { divIcon, LeafletMouseEvent, Map, marker } from 'leaflet';
   styleUrls: ['./add-marker-handler.component.scss'],
   providers: [{ provide: MapHandler, useExisting: forwardRef(() => AddMarkerHandlerComponent) }]
 })
-export class AddMarkerHandlerComponent extends MapHandler {
-  leafletMap: Map;
-
-  constructor() {
-    super();
+export class AddMarkerHandlerComponent extends MapHandler implements OnDestroy {
+  initialize(mapRef: Map): void {
+    super.initialize(mapRef);
+    this.mapRef.on('click', this.createMarkerOnClick, this);
   }
 
-  initialize(map: Map): void {
-    this.leafletMap = map;
-    this.leafletMap.on('click', (event: LeafletMouseEvent) => {
-      this.leafletMap.addLayer(
-        marker(event.latlng, {
-          icon: divIcon()
-        })
-      );
-    });
+  ngOnDestroy(): void {
+    this.mapRef.off('click', this.createMarkerOnClick, this);
+  }
+
+  private createMarkerOnClick(event: LeafletMouseEvent) {
+    this.mapRef.addLayer(
+      marker(event.latlng, {
+        icon: divIcon()
+      })
+    );
   }
 }
