@@ -8,5 +8,5 @@ export class LayerHandler {
     this.id = uuid();
   }
 
-  initialize(map: Map, layer: Layer) {}
+  initialize<T extends Layer>(mapRef: Map, layerRef: T) {}
 }

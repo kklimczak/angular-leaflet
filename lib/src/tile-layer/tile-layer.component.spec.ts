@@ -24,7 +24,7 @@ describe('TileLayerComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  test('should prepare layer', () => {
+  test('should prepare layerRef', () => {
     const map = new Map(document.createElement('div'));
     map.addLayer = jest.fn();
     component.initHandlers = jest.fn();

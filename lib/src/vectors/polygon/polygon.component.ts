@@ -7,11 +7,11 @@ import { BaseLayer } from '../../core/base-layer';
   template: '',
   providers: [{ provide: BaseLayer, useExisting: forwardRef(() => PolygonComponent) }]
 })
-export class PolygonComponent extends BaseLayer {
+export class PolygonComponent extends BaseLayer<Polygon> {
   @Input() set coordinates(value: LatLngExpression[]) {
     this._coordinates = value;
-    if (this.layer) {
-      this.layer.setLatLngs(value);
+    if (this.layerRef) {
+      this.layerRef.setLatLngs(value);
     } else {
       this.createLayer();
     }
@@ -19,36 +19,29 @@ export class PolygonComponent extends BaseLayer {
 
   @Input() set options(value: PathOptions) {
     this._options = value;
-    if (this.layer) {
-      this.layer.setStyle(value);
+    if (this.layerRef) {
+      this.layerRef.setStyle(value);
     } else {
       this.createLayer();
     }
   }
 
-  map: Map | LayerGroup;
-  layer: Polygon;
-
   private _coordinates: LatLngExpression[];
   private _options: PathOptions;
 
-  constructor() {
-    super();
-  }
-
   createLayer() {
-    if (this.map && this._coordinates) {
-      this.layer = polygon(this._coordinates, {
+    if (this.mapRef && this._coordinates) {
+      this.layerRef = polygon(this._coordinates, {
         ...this._options
       });
-      this.map.addLayer(this.layer);
+      this.mapRef.addLayer(this.layerRef);
       this.initHandlers();
     }
   }
 
   addTo(map: Map | LayerGroup): void {
     super.addTo(map);
-    if (!this.layer) {
+    if (!this.layerRef) {
       this.createLayer();
     }
   }

@@ -7,11 +7,11 @@ import { circle, Circle, LatLngExpression, LayerGroup, Map, PathOptions } from '
   template: '',
   providers: [{ provide: BaseLayer, useExisting: forwardRef(() => CircleComponent) }]
 })
-export class CircleComponent extends BaseLayer {
+export class CircleComponent extends BaseLayer<Circle> {
   @Input() set center(value: LatLngExpression) {
     this._center = value;
-    if (this.layer) {
-      this.layer.setLatLng(value);
+    if (this.layerRef) {
+      this.layerRef.setLatLng(value);
     } else {
       this.createLayer();
     }
@@ -19,8 +19,8 @@ export class CircleComponent extends BaseLayer {
 
   @Input() set radius(value: number) {
     this._radius = value;
-    if (this.layer) {
-      this.layer.setRadius(value);
+    if (this.layerRef) {
+      this.layerRef.setRadius(value);
     } else {
       this.createLayer();
     }
@@ -28,35 +28,29 @@ export class CircleComponent extends BaseLayer {
 
   @Input() set options(value: PathOptions) {
     this._options = value;
-    if (this.layer) {
-      this.layer.setStyle(value);
+    if (this.layerRef) {
+      this.layerRef.setStyle(value);
     }
   }
-
-  layer: Circle;
 
   private _center: LatLngExpression;
   private _radius: number;
   private _options: PathOptions;
 
-  constructor() {
-    super();
-  }
-
   addTo(map: Map | LayerGroup): void {
     super.addTo(map);
-    if (!this.layer) {
+    if (!this.layerRef) {
       this.createLayer();
     }
   }
 
   private createLayer() {
-    if (this.map && this._center && this._radius) {
-      this.layer = circle(this._center, {
+    if (this.mapRef && this._center && this._radius) {
+      this.layerRef = circle(this._center, {
         ...this._options,
         radius: this._radius
       });
-      this.map.addLayer(this.layer);
+      this.mapRef.addLayer(this.layerRef);
       this.initHandlers();
     }
   }

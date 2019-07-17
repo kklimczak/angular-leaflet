@@ -8,5 +8,5 @@ export class MapHandler {
     this.id = uuid();
   }
 
-  initialize(map: Map): void {}
+  initialize(mapRef: Map): void {}
 }

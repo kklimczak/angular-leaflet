@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, OnDestroy } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import { divIcon, LatLngExpression, LayerGroup, Map, marker, Marker } from 'leaflet';
 import { BaseLayer } from '../core/base-layer';
 
@@ -7,25 +7,18 @@ import { BaseLayer } from '../core/base-layer';
   template: '',
   providers: [{ provide: BaseLayer, useExisting: forwardRef(() => MarkerComponent) }]
 })
-export class MarkerComponent extends BaseLayer {
+export class MarkerComponent extends BaseLayer<Marker> {
   @Input() set latLng(value: LatLngExpression) {
     this._latLng = value;
     this.prepareLayer();
   }
 
-  map: Map | LayerGroup;
-  layer: Marker;
-
   _latLng: LatLngExpression;
 
-  constructor() {
-    super();
-  }
-
   private prepareLayer() {
-    if (this.map && this._latLng) {
-      if (this.layer) {
-        this.layer.setLatLng(this._latLng);
+    if (this.mapRef && this._latLng) {
+      if (this.layerRef) {
+        this.layerRef.setLatLng(this._latLng);
       } else {
         this.createLayer();
       }
@@ -33,10 +26,10 @@ export class MarkerComponent extends BaseLayer {
   }
 
   private createLayer() {
-    this.layer = marker(this._latLng, {
+    this.layerRef = marker(this._latLng, {
       icon: divIcon()
     });
-    this.map.addLayer(this.layer);
+    this.mapRef.addLayer(this.layerRef);
     this.initHandlers();
   }
 

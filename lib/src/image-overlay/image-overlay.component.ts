@@ -7,11 +7,11 @@ import { BaseLayer } from '../core/base-layer';
   template: '',
   providers: [{ provide: BaseLayer, useExisting: forwardRef(() => ImageOverlayComponent) }]
 })
-export class ImageOverlayComponent extends BaseLayer {
+export class ImageOverlayComponent extends BaseLayer<ImageOverlay> {
   @Input() set src(value: string) {
     this._url = value;
-    if (this.layer) {
-      this.layer.setUrl(value);
+    if (this.layerRef) {
+      this.layerRef.setUrl(value);
     } else {
       this.prepareLayer();
     }
@@ -19,8 +19,8 @@ export class ImageOverlayComponent extends BaseLayer {
 
   @Input() set width(value: number) {
     this._width = value;
-    if (this.layer) {
-      this.layer.setBounds(this.prepareBounds(this._width, this._height));
+    if (this.layerRef) {
+      this.layerRef.setBounds(this.prepareBounds(this._width, this._height));
     } else {
       this.prepareLayer();
     }
@@ -28,22 +28,16 @@ export class ImageOverlayComponent extends BaseLayer {
 
   @Input() set height(value: number) {
     this._height = value;
-    if (this.layer) {
-      this.layer.setBounds(this.prepareBounds(this._width, this._height));
+    if (this.layerRef) {
+      this.layerRef.setBounds(this.prepareBounds(this._width, this._height));
     } else {
       this.prepareLayer();
     }
   }
 
-  layer: ImageOverlay;
-
   private _url: string;
   private _width: number;
   private _height: number;
-
-  constructor() {
-    super();
-  }
 
   addTo(map: Map | LayerGroup): void {
     super.addTo(map);
@@ -51,16 +45,16 @@ export class ImageOverlayComponent extends BaseLayer {
   }
 
   prepareLayer() {
-    if (this.map && this._url && this._height && this._width) {
-      this.layer = imageOverlay(this._url, this.prepareBounds(this._width, this._height));
-      this.map.addLayer(this.layer);
+    if (this.mapRef && this._url && this._height && this._width) {
+      this.layerRef = imageOverlay(this._url, this.prepareBounds(this._width, this._height));
+      this.mapRef.addLayer(this.layerRef);
       this.initHandlers();
     }
   }
 
   private prepareBounds(width: number, height: number): LatLngBounds {
-    const southWest = (this.map as Map).unproject([0, height * 2], 1),
-      northEast = (this.map as Map).unproject([width * 2, 0], 1);
+    const southWest = (this.mapRef as Map).unproject([0, height * 2], 1),
+      northEast = (this.mapRef as Map).unproject([width * 2, 0], 1);
 
     return latLngBounds(southWest, northEast);
   }
