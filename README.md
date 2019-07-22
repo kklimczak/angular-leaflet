@@ -38,14 +38,16 @@ After that, in your application, the leaflet component should appear. To get mor
 
 ## Example
 
-```typescript
+```html
 <app-leaflet [options]="options">
   <app-tile-layer></app-tile-layer>
   <app-feature-group>
     <app-polyline [coordinates]="coordinates | async" [options]="pathOptions | async"></app-polyline>
     <app-marker [latLng]="[51.759445, 19.457216]"></app-marker>
-    <app-polygon [coordinates]="[[51.7894, 19.4972], [51.750, 19.435], [51.731, 19.471]]"
-                 [options]="pathOptions | async"></app-polygon>
+    <app-polygon
+      [coordinates]="[[51.7894, 19.4972], [51.750, 19.435], [51.731, 19.471]]"
+      [options]="pathOptions | async"
+    ></app-polygon>
     <app-rectangle [bounds]="latLngBounds | async" [options]="pathOptions | async"></app-rectangle>
     <app-circle [center]="center | async" [radius]="1000" [options]="pathOptions | async"></app-circle>
   </app-feature-group>
