@@ -1,7 +1,7 @@
 import { Layer, LayerGroup, Map } from 'leaflet';
 import { Observable, Subject } from 'rxjs';
 
-export class NglParent<T = Map> {
+export class NglParent<T extends LayerGroup = LayerGroup> {
   mapRef: Map;
   parentRef: T;
   initialized$: Observable<boolean>;

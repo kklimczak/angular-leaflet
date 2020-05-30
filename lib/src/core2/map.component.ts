@@ -6,6 +6,15 @@ import { asParent } from './tokens';
 @Component({
   selector: 'ngl-map',
   template: '',
+  styles: [
+    `
+      :host {
+        display: flex;
+        width: 100%;
+        height: 100%;
+      }
+    `
+  ],
   providers: [asParent(NglMapComponent)]
 })
 export class NglMapComponent extends NglParent implements OnInit {

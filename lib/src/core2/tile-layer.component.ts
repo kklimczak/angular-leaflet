@@ -1,13 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NglParent } from './ngl-parent';
-import { TileLayer } from 'leaflet';
+import { NglLayer } from './ngl-layer';
+import { TileLayer, tileLayer } from 'leaflet';
+import { asLayer } from './tokens';
 
 @Component({
   selector: 'ngl-tile-layer',
-  template: ''
+  template: '',
+  providers: [asLayer(TileLayerComponent)]
 })
-export class TileLayerComponent {
-  constructor(private parent: NglParent) {
-    this.parent.initialized$.subscribe(() => console.log('parent'));
+export class TileLayerComponent extends NglLayer<TileLayer> {
+  @Input() url: string = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+
+  constructor(parent: NglParent) {
+    super(parent);
+  }
+
+  addLayer() {
+    this.layerRef = tileLayer(this.url);
+    this.parent.attach(this.layerRef);
   }
 }
