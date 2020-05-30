@@ -1,15 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TilesComponent } from './tiles.component';
-import {NglTileLayerModule} from 'angular-leaflet';
-import {NglCoreModule} from 'angular-leaflet';
+import { LeafletModule } from 'angular-leaflet';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NglCoreModule,
-    NglTileLayerModule
-  ],
+  imports: [CommonModule, LeafletModule],
   declarations: [TilesComponent]
 })
-export class TilesModule { }
+export class TilesModule {}
