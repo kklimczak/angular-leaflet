@@ -24,7 +24,7 @@ export class NglParent<T extends LayerGroup = LayerGroup> {
     this._initialized.next(true);
   }
 
-  private getParent(): LayerGroup | Map {
+  getParent(): LayerGroup | Map {
     return this.parentRef instanceof LayerGroup ? this.parentRef : this.mapRef;
   }
 }
